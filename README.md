@@ -16,8 +16,9 @@
 - google or firebase login
 - 로그인한 유저에게만 포켓몬 잡기 허용
 
-## 사이트 구경하기(예정)
-> https://github.com/matty255/poke-ball
+## 사이트 구경하기(제작중)
+- https://github.com/matty255/poke-ball
+- https://poke-ball-621e0.web.app/
 
 ## 참고
 - pokeAPI : https://pokeapi.co/docs/v2
@@ -41,10 +42,12 @@
 4. 다국어 페이지 지원
   - 포켓몬 이름 DB + 라이브러리를 활용하여 다국어 페이지 제작
 
-## 사용 예정 라이브러리(추가중)
-react-router-dom
-react-i18next
-tailwind CSS
-axios
-lodash
-react-router-dom
+## 사용 라이브러리(추가중)
+- react-router-dom
+- react-i18next
+- tailwind CSS
+- axios
+- lodash
+- react-router-dom
+- firebase
+- firebase-tools
