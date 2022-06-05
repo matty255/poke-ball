@@ -8,7 +8,6 @@
     "@testing-library/user-event": "^13.2.1",
     "autoprefixer": "^10.4.7",
     "axios": "^0.27.2",
-    "dotenv": "^16.0.1",
     "firebase": "^9.8.2",
     "firebase-tools": "^11.0.1",
     "lodash": "^4.17.21",
