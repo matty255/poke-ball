@@ -1,35 +1,46 @@
-import { useState, useEffect } from "react";
-import { authService, provider } from "../api/firebase";
-import {
-  getAuth,
-  signInWithPopup,
-  GoogleAuthProvider,
-  signOut,
-  getRedirectResult,
-} from "firebase/auth";
-import { setCookie, deleteCookie } from "./cookie";
+import { firebaseInstance, auth } from "../api/firebase";
+import React, { useEffect, useState, useContext } from "react";
+import { AuthContext } from "../hooks/UserContext";
+import { getAuth, signInWithRedirect } from "firebase/auth";
+import { Navigate } from "react-router-dom";
+import { useAuthState, useSignInWithGoogle } from "react-firebase-hooks/auth";
 
-export const onGoggleClick = () => {
-  const auth = getAuth();
+export const SignIn = () => {
+  const { user } = useContext(AuthContext);
+  const [signInWithGoogle, users, loading, error] = useSignInWithGoogle(auth);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  signInWithPopup(auth, provider)
-    .then((result) => {
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken;
-      setCookie("is_login", "success");
-      // The signed-in user info.
-      const user = result.user;
-      // ...
-    })
-    .catch((error) => {
-      // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // The email of the user's account used.
-      const email = error.email;
-      // The AuthCredential type that was used.
-      const credential = GoogleAuthProvider.credentialFromError(error);
-      // ...
-    });
+  if (error) {
+    return (
+      <div>
+        <p>Error: {error.message}</p>
+      </div>
+    );
+  }
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+  if (user) {
+    return (
+      <div>
+        <p>Signed In User: {user?.email}</p>
+      </div>
+    );
+  } else
+    return (
+      <>
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button onClick={() => signInWithGoogle()}>Sign In</button>
+      </>
+    );
 };

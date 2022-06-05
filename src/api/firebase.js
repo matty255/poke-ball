@@ -1,8 +1,11 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import { getAuth, signInWithRedirect } from "firebase/auth";
+
 import { getAnalytics } from "firebase/analytics";
+
 import * as firebase from "firebase/app";
-import * as auth from "firebase/auth";
+import * as authService from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -15,11 +18,10 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-export const firebaseInstance = firebase;
-export const authService = auth;
-export const provider = new auth.GoogleAuthProvider();
+export const auth = getAuth(app);
 
-const makeAuth = auth.getAuth(app);
-makeAuth.languageCode = "it";
+export const firebaseInstance = firebase;
+
+export const provider = new authService.GoogleAuthProvider();
 
 const analytics = getAnalytics(app);
