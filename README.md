@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+## 프로젝트 시작 동기
+- 리액트의 상태관리를 좀더 손에 익히고 함수형 문법에 익숙해지기 위해서!
+- 전설의 포켓몬을 잡고 싶어서!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 제작기간
+2022 - 06 - 03 (제작중)
 
-## Available Scripts
+## 프로젝트 소개
+- 모바일 증강현실 게임 pokemonGO의 minified version of application.
+- pokemonGO의 주요 셀링포인트인 수집에 포커스를 두고 다마고치 감성으로 만들고 있습니다.
 
-In the project directory, you can run:
+## 프로젝트의 주요 목표
+- poke API 다루기
+- Context API로 로컬 상태 관리
+- 다국어페이지 ui, dark mode, 렌더링 최적화
+- google or firebase login
+- 로그인한 유저에게만 포켓몬 잡기 허용
 
-### `yarn start`
+## 사이트 구경하기(예정)
+> https://github.com/matty255/poke-ball
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 참고
+- pokeAPI : https://pokeapi.co/docs/v2
+- freecodecamp : https://www.freecodecamp.org/news/building-a-simple-pokemon-web-app-with-react-hooks-and-context-api/
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 주요기능
+1. 랜덤으로 이미지가 포함된 포켓몬 리스트를 불러오기
+  - 무한스크롤
+  - 새로고침 시 랜덤 셔플
 
-### `yarn test`
+2. 좋아하는 포켓몬을 잡고 모아보기
+  - 메인페이지에서 잡기 or 상세페이지에서 이로치 여부 확인가능
+  - 잡은 포켓몬은 포켓몬박스에 보관
+  - 내가 잡은 포켓몬을 sns로 공유
+  - 로그인한 유저 전용 기능
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. api에서 특정 포켓몬 검색
+  - 특정 포켓몬을 검색하거나 치트코드를 입력하여 포켓몬을 소환해 잡을 수 있는 기능
+  - 로그인한 유저 전용 기능
+ 
+4. 다국어 페이지 지원
+  - 포켓몬 이름 DB + 라이브러리를 활용하여 다국어 페이지 제작
 
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 사용 예정 라이브러리(추가중)
+react-router-dom
+react-i18next
+tailwind CSS
+axios
+lodash
+react-router-dom
