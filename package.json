@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.2.1",
     "autoprefixer": "^10.4.7",
     "axios": "^0.27.2",
+    "dotenv": "^16.0.1",
     "firebase": "^9.8.2",
     "firebase-tools": "^11.0.1",
     "lodash": "^4.17.21",
@@ -21,7 +22,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "CI=false && react-scripts build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -32,7 +33,7 @@
     ]
   },
   "browserslist": {
-    "production": [ 
+    "production": [
       ">0.2%",
       "not dead",
       "not op_mini all"
