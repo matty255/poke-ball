@@ -3,6 +3,7 @@ import PokemonList from "./components/PokemonList";
 import PokemonBox from "./components/PokemonBox";
 import PokemonForm from "./components/PokemonForm";
 import PokemonDetail from "./view/PokemonDetail";
+import SignInForm from "./components/SignInForm";
 
 function App() {
   return (
@@ -18,12 +19,16 @@ function App() {
           <Link to="/poke-custom" className="p-4">
             검색하기
           </Link>
+          <Link to="/sign-in" className="p-4">
+            로그인
+          </Link>
         </div>
         <Routes>
           <Route path="/" element={<PokemonList />} />
           <Route path="/poke-box" element={<PokemonBox />} />
           <Route path="/poke-custom" element={<PokemonForm />} />
           <Route path="/detail/*" element={<PokemonDetail />} />
+          <Route path="/sign-in" element={<SignInForm />} />
         </Routes>
       </div>
     </>
