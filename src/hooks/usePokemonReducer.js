@@ -26,7 +26,9 @@ const addPokemon = (pokemon, state) => ({
 });
 
 const addPokemons = (poke, state) => ({
-  pokemons: [...new Set([...state.pokemons, ...poke])],
+  pokemons: [...new Set([...state.pokemons, ...poke])].sort(
+    () => Math.random() - 0.5
+  ),
   capturedPokemons: state.capturedPokemons,
 });
 

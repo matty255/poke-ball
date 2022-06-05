@@ -1,21 +1,29 @@
 import { useState, useContext } from "react";
-import { PokemonContext } from "./PokemonContext";
+import { PokemonContext } from "../hooks/usePokemonContext";
+import PokemonCard from "../view/PokemonCard";
 
 const PokemonBox = () => {
-  const { capturedPokemons, release } = useContext(PokemonContext);
+  const { capturedPokemons } = useContext(PokemonContext);
 
   return (
-    <div className="pokemon-box">
-      <h2>포켓몬 박스</h2>
-
-      {capturedPokemons.map((pokemon) => (
-        <div key={`${pokemon.id}-${pokemon.name}`}>
-          <p>{pokemon.id}</p>
-          <p>{pokemon.name}</p>
-          <button onClick={release(pokemon)}>놓아주기-</button>
-        </div>
-      ))}
-    </div>
+    <>
+      <div className="mx-auto text-right">
+        <h2>포켓몬 박스</h2>
+      </div>
+      <div className="flex flex-row flex-wrap justify-center items-center">
+        {capturedPokemons.length > 0 &&
+          capturedPokemons.map((pokemon, i) => {
+            const pokemonIndex =
+              pokemon.url.split("/")[pokemon.url.split("/").length - 2];
+            const image = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonIndex}.png`;
+            return (
+              <div key={`${i}-${pokemon.name}`}>
+                <PokemonCard pokemon={pokemon} image={image} type="release" />
+              </div>
+            );
+          })}
+      </div>
+    </>
   );
 };
 
