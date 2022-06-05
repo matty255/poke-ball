@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import PokemonList from "./components/PokemonList";
 import PokemonBox from "./components/PokemonBox";

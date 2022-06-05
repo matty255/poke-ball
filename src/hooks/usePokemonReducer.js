@@ -1,8 +1,9 @@
 import { useReducer } from "react";
+import _ from "lodash";
 import { CAPTURE, RELEASE, ADD_POKEMON, ADD_POKEMONS } from "./actions";
 
 const getCapturedPokemons = (capturedPokemons, releasedPokemon) =>
-  capturedPokemons.filter((pokemon) => pokemon !== releasedPokemon);
+  _.filter(capturedPokemons, (pokemon) => pokemon !== releasedPokemon);
 
 const releasePokemon = (releasedPokemon, state) => ({
   pokemons: [...state.pokemons, releasedPokemon],
@@ -21,13 +22,13 @@ const capturePokemon = (pokemon, state) => ({
 });
 
 const addPokemon = (pokemon, state) => ({
-  pokemons: new Set([...state.pokemons, pokemon]),
+  pokemons: _.uniq([...state.pokemons, pokemon]),
   capturedPokemons: state.capturedPokemons,
 });
 
 const addPokemons = (poke, state) => ({
-  pokemons: [...new Set([...state.pokemons, ...poke])].sort(
-    () => Math.random() - 0.5
+  pokemons: _.uniq(
+    [...state.pokemons, ...poke].sort(() => Math.random() - 0.5)
   ),
   capturedPokemons: state.capturedPokemons,
 });
