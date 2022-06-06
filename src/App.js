@@ -1,11 +1,11 @@
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import PokemonList from "./components/PokemonList";
 import PokemonBox from "./components/PokemonBox";
 import PokemonForm from "./components/PokemonForm";
 import PokemonDetail from "./view/PokemonDetail";
 import Header from "./view/Header";
 import InputForm from "./components/InputForm";
-import { AuthProvider, AuthContext } from "./hooks/UserContext";
+import { AuthProvider } from "./hooks/UserContext";
 
 function App() {
   return (

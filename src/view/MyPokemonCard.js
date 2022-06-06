@@ -6,9 +6,6 @@ import { AuthContext } from "../hooks/UserContext";
 import { releasePokemon } from "../api/sandPokemon";
 
 const MyPokemonCard = ({ uid, pokemonId, imgUrl, type, id }) => {
-  const { user } = useContext(AuthContext);
-  let navigate = useNavigate();
-
   return (
     <div className="p-4 m-2 border border-gray-400 rounded-md bg-white ">
       <p>{translateName(pokemonId)}</p>

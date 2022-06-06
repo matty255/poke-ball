@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import { auth } from "../api/firebase";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../hooks/UserContext";
 import { logout } from "../api/signOut";

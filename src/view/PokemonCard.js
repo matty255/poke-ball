@@ -1,28 +1,28 @@
-import { useState, useEffect, useContext, useRef } from "react";
+import { useContext, useRef } from "react";
 import { PokemonContext } from "../hooks/usePokemonContext";
 import { useNavigate } from "react-router-dom";
 import { translateName } from "../hooks/useTranslateName";
 import { AuthContext } from "../hooks/UserContext";
 
 const PokemonCard = ({ pokemon, image, type }) => {
-  const { pokemons, capture, release, addPokemons, captureFB } =
-    useContext(PokemonContext);
+  const { pokemons, capture, captureFB } = useContext(PokemonContext);
   const { user } = useContext(AuthContext);
   let userId = user?.uid;
   let navigate = useNavigate();
+
   const pokemonIndex =
     pokemon?.url.split("/")[pokemon.url.split("/").length - 2];
 
-  const ClickToResult = () => {
-    navigate(`/detail/${pokemonIndex}`, {
-      state: {
-        pokemon: pokemon,
-        image: image,
-        type: type,
-        pokemonId: pokemonIndex,
-      },
-    });
-  };
+  // const ClickToResult = () => {
+  //   navigate(`/detail/${pokemonIndex}`, {
+  //     state: {
+  //       pokemon: pokemon,
+  //       image: image,
+  //       type: type,
+  //       pokemonId: pokemonIndex,
+  //     },
+  //   });
+  // };
 
   const youNeedToLogin = () => {
     alert("로그인하세요!");
