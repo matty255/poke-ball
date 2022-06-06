@@ -10,7 +10,7 @@ const PokemonForm = () => {
   let navigate = useNavigate();
   const [pokemonName, setPokemonName] = useState();
   const [pokemon, setPokemon] = useState({});
-  const num_ = useGenerateNumber(1, pokemonName);
+  const num_Shiny = useGenerateNumber(1, 10);
   const num = useGenerateNumber(1, 898);
   const { captureFB } = useContext(PokemonContext);
   const { user } = useContext(AuthContext);
@@ -24,14 +24,22 @@ const PokemonForm = () => {
 
   const callPokemon = () => {
     if (!user) return alert("로그인해주세요!");
+    if (!pokemonName) return alert("내용을 입력해주세요!");
     try {
       setTimeout(async () => {
         const response = await axios.get(
           `https://pokeapi.co/api/v2/pokemon/${num}/`
         );
+        console.log(response.data);
         const id = response.data.id;
-        const img = response.data.sprites.front_default;
-        setPokemon({ id, img });
+        if (num_Shiny > 6) {
+          const img = response.data.sprites.front_shiny;
+          alert("이로치 등장!");
+          setPokemon({ id, img });
+        } else {
+          const img = response.data.sprites.front_default;
+          setPokemon({ id, img });
+        }
       }, 100);
     } catch (error) {
       alert("실패");
@@ -40,18 +48,20 @@ const PokemonForm = () => {
 
   return (
     <>
-      <p>포켓몬 랜덤 소환</p>
-      <form onSubmit={handleFormSubmit}>
-        <input
-          type="text"
-          placeholder="pokemon name"
-          onChange={handleNameOnChange}
-        />
-        <button onClick={callPokemon}>랜덤 글자 입력하고 클릭!</button>
-      </form>
+      <div className="flex justify-center items-center mt-4">
+        <form onSubmit={handleFormSubmit}>
+          <input type="text" placeholder="여기" onChange={handleNameOnChange} />
+          <button onClick={callPokemon}>랜덤 글자 입력하고 클릭!</button>
+        </form>
+      </div>
+
       {pokemon && pokemon.id && (
-        <div>
-          <img src={pokemon?.img} alt="" />
+        <div className="mx-auto flex flex-col justify-center items-center">
+          <img
+            src={pokemon?.img}
+            alt=""
+            className="animate-bounce object-contain max-w-fit"
+          />
           <p>{translateName(pokemon?.id)}</p>
           <button onClick={() => navigate("/poke-box")}>
             <button

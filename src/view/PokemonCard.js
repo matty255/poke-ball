@@ -1,6 +1,6 @@
 import { useContext, useRef } from "react";
 import { PokemonContext } from "../hooks/usePokemonContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { translateName } from "../hooks/useTranslateName";
 import { AuthContext } from "../hooks/UserContext";
 
@@ -13,16 +13,16 @@ const PokemonCard = ({ pokemon, image, type }) => {
   const pokemonIndex =
     pokemon?.url.split("/")[pokemon.url.split("/").length - 2];
 
-  // const ClickToResult = () => {
-  //   navigate(`/detail/${pokemonIndex}`, {
-  //     state: {
-  //       pokemon: pokemon,
-  //       image: image,
-  //       type: type,
-  //       pokemonId: pokemonIndex,
-  //     },
-  //   });
-  // };
+  const ClickToCatch = () => {
+    navigate(`/detail/${pokemonIndex}`, {
+      state: {
+        pokemon: pokemon,
+        image: image,
+        type: type,
+        pokemonId: pokemonIndex,
+      },
+    });
+  };
 
   const youNeedToLogin = () => {
     alert("로그인하세요!");
@@ -33,19 +33,25 @@ const PokemonCard = ({ pokemon, image, type }) => {
         <p>{translateName(pokemonIndex)}</p>
         <img src={image} alt="" className="animate-bounce" />
         {type === "capture" && userId ? (
-          <button onClick={capture(pokemon)}>
-            <button
-              onClick={captureFB({
-                pokemonId: pokemonIndex,
-                imgUrl: image,
-                uid: user?.uid,
-              })}
-            >
-              추가+
+          <>
+            <button onClick={capture(pokemon)}>
+              <button
+                onClick={captureFB({
+                  pokemonId: pokemonIndex,
+                  imgUrl: image,
+                  uid: user?.uid,
+                })}
+              >
+                그냥잡기+
+              </button>
             </button>
-          </button>
+            <button onClick={ClickToCatch}>공던지기+</button>
+          </>
         ) : (
-          <button onClick={youNeedToLogin}>추가+</button>
+          <>
+            <button onClick={youNeedToLogin}>그냥잡기+</button>
+            <button onClick={youNeedToLogin}>공던지기+</button>
+          </>
         )}
       </div>
     </div>

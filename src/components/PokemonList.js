@@ -4,9 +4,9 @@ import { PokemonContext } from "../hooks/usePokemonContext";
 import PokemonCard from "../view/PokemonCard";
 import axios from "axios";
 import { useGenerateNumber } from "../hooks/useGenerateNumber";
-
+import Spinner from "../view/Spinner";
 const PokemonList = () => {
-  const num = useGenerateNumber(1, 898);
+  const num = useGenerateNumber(1, 880);
   const [loading, setLoading] = useState(true);
   const [pageNum, setPageNum] = useState(
     `https://pokeapi.co/api/v2/pokemon/?limit=20&offset=${num}`
@@ -88,11 +88,7 @@ const PokemonList = () => {
             );
           })}
 
-        {loading && (
-          <p className="text-center fixed inset-1/2 text-4xl text-pink-500 bg-blue-500 p-6">
-            loading...
-          </p>
-        )}
+        {loading && <Spinner />}
         {end && <p className="text-center my-10">여기가 페이지 끝입니다!</p>}
       </div>
     </div>
