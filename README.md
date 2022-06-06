@@ -13,8 +13,8 @@
 - poke API 다루기
 - Context API로 로컬 상태 관리
 - 다국어페이지 ui, dark mode, 렌더링 최적화
-- google or firebase login
-- 로그인한 유저에게만 포켓몬 잡기 허용
+- firebase auth를 사용한 google, facebook 소셜 로그인
+- github actions로 ci/cd 구축
 
 ## 사이트 구경하기(제작중)
 - https://github.com/matty255/poke-ball
@@ -22,6 +22,7 @@
 
 ## 참고
 - pokeAPI : https://pokeapi.co/docs/v2
+- firebase codelab : https://firebase.google.com/codelabs/firebase-web?authuser=0&hl=ko#0
 - freecodecamp : https://www.freecodecamp.org/news/building-a-simple-pokemon-web-app-with-react-hooks-and-context-api/
 
 ## 주요기능
@@ -29,15 +30,15 @@
   - 무한스크롤
   - 새로고침 시 랜덤 셔플
 
-2. 좋아하는 포켓몬을 잡고 모아보기
+2. 좋아하는 포켓몬을 잡고 모아보기(로그인 유저 전용)
   - 메인페이지에서 잡기 or 상세페이지에서 이로치 여부 확인가능
+  - 실패 확률 표시
   - 잡은 포켓몬은 포켓몬박스에 보관
   - 내가 잡은 포켓몬을 sns로 공유
-  - 로그인한 유저 전용 기능
 
-3. api에서 특정 포켓몬 검색
+3. api에서 특정 포켓몬 검색(로그인 유저 전용)
   - 특정 포켓몬을 검색하거나 치트코드를 입력하여 포켓몬을 소환해 잡을 수 있는 기능
-  - 로그인한 유저 전용 기능
+  - 숫자나 텍스트를 범위 내로 난수화하기
  
 4. 다국어 페이지 지원
   - 포켓몬 이름 DB + 라이브러리를 활용하여 다국어 페이지 제작
@@ -49,5 +50,6 @@
 - axios
 - lodash
 - react-router-dom
-- firebase
+- firebase Auth, firestore
 - firebase-tools
+- React Firebase Hooks
