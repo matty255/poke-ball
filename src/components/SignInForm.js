@@ -7,7 +7,7 @@ import { SignIn } from "../api/signIn";
 
 const SignInForm = () => {
   const { user } = useContext(AuthContext);
-
+  console.log(user);
   return (
     <>
       {!user ? (

@@ -9,7 +9,6 @@ import { saveMessage } from "../api/sandMessage";
 const SignInForm = () => {
   const { user } = useContext(AuthContext);
   const text = useRef(null);
-  console.log(text);
 
   return (
     <>

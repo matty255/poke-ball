@@ -1,29 +1,23 @@
 import { useState, useContext } from "react";
-import { PokemonContext } from "../hooks/usePokemonContext";
-import PokemonCard from "../view/PokemonCard";
+import { CapturedPokemons } from "../api/getCapturedPokemon";
+import { AuthContext } from "../hooks/UserContext";
 
 const PokemonBox = () => {
-  const { capturedPokemons } = useContext(PokemonContext);
+  const { user } = useContext(AuthContext);
 
   return (
-    <>
-      <div className="mx-auto text-right">
-        <h2>포켓몬 박스</h2>
-      </div>
-      <div className="flex flex-row flex-wrap justify-center items-center">
-        {capturedPokemons.length > 0 &&
-          capturedPokemons.map((pokemon, i) => {
-            const pokemonIndex =
-              pokemon.url.split("/")[pokemon.url.split("/").length - 2];
-            const image = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonIndex}.png`;
-            return (
-              <div key={`${i}-${pokemon.name}`}>
-                <PokemonCard pokemon={pokemon} image={image} type="release" />
-              </div>
-            );
-          })}
-      </div>
-    </>
+    <div>
+      {!user ? (
+        <p>"로그인하세요!"</p>
+      ) : (
+        <>
+          <div className="mx-auto text-right">
+            <h2>포켓몬 박스</h2>
+          </div>
+          <div className="flex flex-row flex-wrap ">{CapturedPokemons()}</div>
+        </>
+      )}
+    </div>
   );
 };
 
