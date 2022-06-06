@@ -4,7 +4,6 @@ import PokemonBox from "./components/PokemonBox";
 import PokemonForm from "./components/PokemonForm";
 import PokemonDetail from "./view/PokemonDetail";
 import Header from "./view/Header";
-import InputForm from "./components/InputForm";
 import { AuthProvider } from "./hooks/UserContext";
 
 function App() {
@@ -13,7 +12,6 @@ function App() {
       <AuthProvider>
         <div className="App p-4 m-4">
           <Header />
-          <InputForm />
           <Routes>
             <Route path="/" element={<PokemonList />} />
             <Route path="/poke-box" element={<PokemonBox />} />
