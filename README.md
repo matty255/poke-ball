@@ -13,7 +13,7 @@
 - poke API 다루기
 - Context API로 로컬 상태 관리
 - 다국어페이지 ui, dark mode, 렌더링 최적화
-- google or firebase login
+- firebase auth를 사용한 google, facebook 소셜 로그인
 - 로그인한 유저에게만 포켓몬 잡기 허용
 
 ## 사이트 구경하기(제작중)
@@ -22,6 +22,7 @@
 
 ## 참고
 - pokeAPI : https://pokeapi.co/docs/v2
+- firebase codelab : https://firebase.google.com/codelabs/firebase-web?authuser=0&hl=ko#0
 - freecodecamp : https://www.freecodecamp.org/news/building-a-simple-pokemon-web-app-with-react-hooks-and-context-api/
 
 ## 주요기능
@@ -49,5 +50,6 @@
 - axios
 - lodash
 - react-router-dom
-- firebase
+- firebase Auth, firestore
 - firebase-tools
+- React Firebase Hooks
