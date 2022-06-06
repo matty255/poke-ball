@@ -6,7 +6,7 @@ import axios from "axios";
 import { useGenerateNumber } from "../hooks/useGenerateNumber";
 
 const PokemonList = () => {
-  const num = useGenerateNumber(1, 20);
+  const num = useGenerateNumber(1, 898);
   const [loading, setLoading] = useState(true);
   const [pageNum, setPageNum] = useState(
     `https://pokeapi.co/api/v2/pokemon/?limit=20&offset=${num}`
@@ -16,7 +16,7 @@ const PokemonList = () => {
   const [end, setEnd] = useState(false);
 
   const { pokemons, addPokemons } = useContext(PokemonContext);
-
+  console.log(pokemons);
   useEffect(() => {
     if (!end) {
       callList();
