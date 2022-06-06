@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext, useRef } from "react";
+import { useState, useEffect, useContext } from "react";
 import { PokemonContext } from "../hooks/usePokemonContext";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import axios from "axios";

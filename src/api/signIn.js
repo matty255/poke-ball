@@ -1,9 +1,7 @@
-import { firebaseInstance, auth } from "../api/firebase";
-import React, { useEffect, useState, useContext } from "react";
+import { auth } from "../api/firebase";
+import React, { useState, useContext } from "react";
 import { AuthContext } from "../hooks/UserContext";
-import { getAuth, signInWithRedirect } from "firebase/auth";
-import { Navigate } from "react-router-dom";
-import { useAuthState, useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 
 export const SignIn = () => {
   const { user } = useContext(AuthContext);
@@ -30,17 +28,19 @@ export const SignIn = () => {
   } else
     return (
       <>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button onClick={() => signInWithGoogle()}>Sign In</button>
+        <div className="flex flex-row justify-end gap-2">
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button onClick={() => signInWithGoogle()}>구글로그인</button>
+        </div>
       </>
     );
 };

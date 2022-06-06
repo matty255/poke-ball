@@ -1,7 +1,5 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithRedirect } from "firebase/auth";
-
+import { getAuth } from "firebase/auth";
 import { getAnalytics } from "firebase/analytics";
 
 import * as firebase from "firebase/app";
@@ -18,10 +16,11 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
+const auth = getAuth(app);
 
-export const firebaseInstance = firebase;
+const firebaseInstance = firebase;
 
-export const provider = new authService.GoogleAuthProvider();
-
+const provider = new authService.GoogleAuthProvider();
 const analytics = getAnalytics(app);
+
+export { app, auth, firebaseInstance, provider, analytics };
