@@ -1,45 +1,28 @@
 import { auth } from "../api/firebase";
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../hooks/UserContext";
-import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import {
+  useSignInWithGoogle,
+  useSignInWithFacebook,
+} from "react-firebase-hooks/auth";
 
 export const SignIn = () => {
   const { user } = useContext(AuthContext);
   const [signInWithGoogle, users, loading, error] = useSignInWithGoogle(auth);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [signInWithFacebook, userFace, loadingFace, errorFace] =
+    useSignInWithFacebook(auth);
 
-  if (error) {
-    return (
-      <div>
-        <p>Error: {error.message}</p>
-      </div>
-    );
-  }
-  if (loading) {
+  if (loading || loadingFace) {
     return <p>Loading...</p>;
   }
-  if (user) {
-    return (
-      <div>
-        <p>Signed In User: {user?.email}</p>
-      </div>
-    );
+  if (user || userFace) {
+    return <p>접속중</p>;
   } else
     return (
       <>
-        <div className="flex flex-row justify-end gap-2">
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+        <div className="flex flex-row justify-end items-center gap-2">
           <button onClick={() => signInWithGoogle()}>구글로그인</button>
+          <button onClick={() => signInWithFacebook()}>페이스북로그인</button>
         </div>
       </>
     );
