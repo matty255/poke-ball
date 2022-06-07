@@ -7,7 +7,7 @@ import Logout from "../static/logout.png";
 
 const SignInForm = () => {
   const { user } = useContext(AuthContext);
-  console.log(user);
+
   return (
     <>
       {!user ? (

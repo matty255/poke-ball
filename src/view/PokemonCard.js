@@ -6,12 +6,26 @@ import { AuthContext } from "../hooks/UserContext";
 import tw from "tailwind-styled-components";
 
 const Card = tw.div`
-border-2 border-yellow-400 border-dashed rounded-md md:w-60 lg:w-64
+ rounded-md md:w-60 lg:w-64 py-3
  items-center bg-[#FFFFFF80] shadow-md
+`;
+
+const TitleName = tw.h2`
+text-xl mr-5 font-semibold tracking-wider
 `;
 
 const CardImage = tw.img`
 animate-bounce p-4 opacity-100 drop-shadow-2xl
+`;
+
+const CatchButton = tw.button`
+ border text-sm rounded-md hover:bg-blue-300 hover:text-white
+ hover:border-blue-300 active:bg-yellow-200 active:border-yellow-200
+`;
+
+const FlexBox = tw.div`
+flex flex-row justify-center md:justify-end items-center gap-2 md:mr-5
+
 `;
 
 const PokemonCard = ({ pokemon, image, type }) => {
@@ -40,27 +54,31 @@ const PokemonCard = ({ pokemon, image, type }) => {
 
   return (
     <Card>
-      <p>{translateName(pokemonIndex)}</p>
+      <TitleName>{translateName(pokemonIndex)}</TitleName>
       <CardImage src={image} alt="" />
       {type === "capture" && userId ? (
         <>
-          <button onClick={capture(pokemon)}>
-            <button
-              onClick={captureFB({
-                pokemonId: pokemonIndex,
-                imgUrl: image,
-                uid: user?.uid,
-              })}
-            >
-              그냥잡기+
-            </button>
-          </button>
-          <button onClick={ClickToCatch}>공던지기+</button>
+          <FlexBox>
+            <div onClick={capture(pokemon)}>
+              <CatchButton
+                onClick={captureFB({
+                  pokemonId: pokemonIndex,
+                  imgUrl: image,
+                  uid: user?.uid,
+                })}
+              >
+                그냥잡기+
+              </CatchButton>
+            </div>
+            <CatchButton onClick={ClickToCatch}>공던지기+</CatchButton>
+          </FlexBox>
         </>
       ) : (
         <>
-          <button onClick={youNeedToLogin}>그냥잡기+</button>
-          <button onClick={youNeedToLogin}>공던지기+</button>
+          <FlexBox>
+            <CatchButton onClick={youNeedToLogin}>그냥잡기+</CatchButton>
+            <CatchButton onClick={youNeedToLogin}>공던지기+</CatchButton>
+          </FlexBox>
         </>
       )}
     </Card>

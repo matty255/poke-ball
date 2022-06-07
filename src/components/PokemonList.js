@@ -7,6 +7,8 @@ import { useGenerateNumber } from "../hooks/useGenerateNumber";
 import Spinner from "../view/Spinner";
 import tw from "tailwind-styled-components";
 import Refresh from "../static/refresh.png";
+import ToggleDark from "../elements/ToggleDark";
+import ToggleLang from "../elements/ToggleLang";
 
 const CardBox = tw.div`
 flex flex-row flex-wrap items-center gap-3 gap-y-5 md:gap-y-6
@@ -24,7 +26,7 @@ const PokemonList = () => {
   const [end, setEnd] = useState(false);
 
   const { pokemons, addPokemons } = useContext(PokemonContext);
-  console.log(pokemons);
+
   useEffect(() => {
     if (!end) {
       callList();
@@ -75,12 +77,18 @@ const PokemonList = () => {
 
   return (
     <div className="mx-auto text-right bg-moon-pattern bg-fixed bg-center bg-no-repeat">
-      <button
-        onClick={callList}
-        className="w-12 p-2 mr-2 hover:animate-spin transition-transform delay-300 duration-500"
-      >
-        <img src={Refresh} alt="새로고침" />
-      </button>
+      <div className="flex flex-row justify-between">
+        <div className="flex flex-row m-3 gap-3">
+          <ToggleDark />
+          <ToggleLang />
+        </div>
+        <button
+          onClick={callList}
+          className="w-12 p-2 mr-2 hover:animate-spin transition-transform delay-300 duration-500"
+        >
+          <img src={Refresh} alt="새로고침" />
+        </button>
+      </div>
       <CardBox>
         {pokemons.length > 0 &&
           pokemons.map((pokemon, i) => {

@@ -13,7 +13,6 @@ export const SignIn = () => {
   const [signInWithGoogle, users, loading, error] = useSignInWithGoogle(auth);
   const [signInWithFacebook, userFace, loadingFace, errorFace] =
     useSignInWithFacebook(auth);
-  console.log(errorFace);
 
   if (loading || loadingFace) {
     return <p className="text-white">Loading...</p>;
