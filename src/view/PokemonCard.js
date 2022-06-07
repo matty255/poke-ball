@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { PokemonContext } from "../hooks/usePokemonContext";
+import { PokemonContext } from "../hooks/PokemonContext";
 import { useNavigate } from "react-router-dom";
 import { translateName } from "../hooks/useTranslateName";
 import { AuthContext } from "../hooks/UserContext";

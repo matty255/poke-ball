@@ -1,11 +1,10 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../hooks/UserContext";
-import { logout } from "../api/signOut";
-import { SignIn } from "../api/signIn";
+import { SignIn, logout } from "../api/authLogInAndOut";
 import Logout from "../static/logout.png";
 
-const SignInForm = () => {
+const UserSignInForm = () => {
   const { user } = useContext(AuthContext);
 
   return (
@@ -27,4 +26,4 @@ const SignInForm = () => {
   );
 };
 
-export default SignInForm;
+export default UserSignInForm;

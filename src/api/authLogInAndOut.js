@@ -1,4 +1,4 @@
-import { auth } from "../api/firebase";
+import { auth } from "./firebase";
 import { useContext } from "react";
 import { AuthContext } from "../hooks/UserContext";
 import {
@@ -7,6 +7,7 @@ import {
 } from "react-firebase-hooks/auth";
 import GoogleIcon from "../static/googleIcon.png";
 import FacebookIcon from "../static/facebookIcon.png";
+import { signOut } from "firebase/auth";
 
 export const SignIn = () => {
   const { user } = useContext(AuthContext);
@@ -32,4 +33,8 @@ export const SignIn = () => {
         </div>
       </>
     );
+};
+
+export const logout = () => {
+  signOut(auth);
 };

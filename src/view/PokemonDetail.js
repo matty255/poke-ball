@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { PokemonContext } from "../hooks/usePokemonContext";
+import { PokemonContext } from "../hooks/PokemonContext";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useGenerateNumber } from "../hooks/useGenerateNumber";
 import axios from "axios";

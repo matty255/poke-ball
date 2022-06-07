@@ -1,5 +1,5 @@
 import { getFirestore, collection } from "firebase/firestore";
-import { auth, app } from "../api/firebase";
+import { app } from "../api/firebase";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { AuthContext } from "../hooks/UserContext";
 import { useContext } from "react";

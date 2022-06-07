@@ -1,5 +1,5 @@
 import { translateName } from "../hooks/useTranslateName";
-import { releasePokemon } from "../api/sandPokemon";
+import { releasePokemon } from "../api/postAndDeletePokemon";
 import { useNavigate, Link } from "react-router-dom";
 import tw from "tailwind-styled-components";
 

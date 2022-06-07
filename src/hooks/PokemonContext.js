@@ -1,7 +1,7 @@
 import React, { createContext } from "react";
 import { usePokemonReducer } from "./usePokemonReducer";
 import { CAPTURE, RELEASE, ADD_POKEMON, ADD_POKEMONS } from "./actions";
-import { savePokemon, releasePokemon } from "../api/sandPokemon";
+import { savePokemon, releasePokemon } from "../api/postAndDeletePokemon";
 const PokemonContext = createContext();
 
 const PokeProvider = (props) => {

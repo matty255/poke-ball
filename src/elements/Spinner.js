@@ -6,7 +6,7 @@ const Spinner = () => {
   return (
     <div
       className="bg-yellow-400 w-screen h-screen fixed top-0 left-0 dark:bg-gray-700
-      dark:bg-gradient-radial from-yellow-200 via-gray-800 to-gray-900
+      md:dark:bg-gradient-radial from-yellow-200 via-gray-800 to-gray-900
     "
     >
       <Outter>
@@ -17,7 +17,7 @@ const Spinner = () => {
 };
 
 const Outter = tw.div`
-  fixed top-0 left-0 from-yellow-200 via-transparent to-transparent bg-gradient-radial
+  fixed top-0 left-0 from-yellow-200 via-transparent to-transparent md:bg-gradient-radial
   w-screen h-screen flex items-center justify-center
    z-50
 `;

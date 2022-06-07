@@ -1,8 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 import PokemonList from "./components/PokemonList";
 import PokemonBox from "./components/PokemonBox";
-import PokemonForm from "./components/PokemonForm";
+import PokemonForm from "./components/PokemonSummonForm";
 import PokemonDetail from "./view/PokemonDetail";
+import PokemonShare from "./components/PokemonShare";
 import Header from "./view/Header";
 import { AuthProvider } from "./hooks/UserContext";
 
@@ -17,6 +18,7 @@ function App() {
             <Route path="/poke-box" element={<PokemonBox />} />
             <Route path="/poke-custom" element={<PokemonForm />} />
             <Route path="/detail/*" element={<PokemonDetail />} />
+            <Route path="/share/*" element={<PokemonShare />} />
           </Routes>
         </div>
       </AuthProvider>

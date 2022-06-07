@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { PokemonContext } from "../hooks/usePokemonContext";
+import { PokemonContext } from "../hooks/PokemonContext";
 import { translateName } from "../hooks/useTranslateName";
 import { useGenerateNumber } from "../hooks/useGenerateNumber";
 import { AuthContext } from "../hooks/UserContext";

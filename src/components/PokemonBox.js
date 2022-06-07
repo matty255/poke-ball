@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { CapturedPokemons } from "../api/getCapturedPokemon";
 import { AuthContext } from "../hooks/UserContext";
 

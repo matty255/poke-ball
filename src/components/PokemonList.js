@@ -1,10 +1,10 @@
 import { useState, useEffect, useContext, useRef } from "react";
-import { PokemonContext } from "../hooks/usePokemonContext";
+import { PokemonContext } from "../hooks/PokemonContext";
 
 import PokemonCard from "../view/PokemonCard";
 import axios from "axios";
 import { useGenerateNumber } from "../hooks/useGenerateNumber";
-import Spinner from "../view/Spinner";
+import Spinner from "../elements/Spinner";
 import tw from "tailwind-styled-components";
 import Refresh from "../static/refresh.png";
 import ToggleDark from "../elements/ToggleDark";
