@@ -12,7 +12,7 @@ const ToggleDark = () => {
 
   return (
     <Outter>
-      <div className="flex items-center justify-center w-full ">
+      <div className="flex items-center justify-center w-full drop-shadow-md">
         <label htmlFor="toggleA" className="flex items-center cursor-pointer">
           <div className="relative">
             <input

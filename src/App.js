@@ -8,9 +8,9 @@ import { AuthProvider } from "./hooks/UserContext";
 
 function App() {
   return (
-    <>
+    <div className="dark:bg-gray-800">
       <AuthProvider>
-        <div className="App  max-w-4xl mx-auto font-sanss2 dark:bg-gray-700">
+        <div className="App max-w-4xl mx-auto font-sanss2 dark:bg-gray-700 shadow-md text-gray-700">
           <Header />
           <Routes>
             <Route path="/" element={<PokemonList />} />
@@ -20,7 +20,7 @@ function App() {
           </Routes>
         </div>
       </AuthProvider>
-    </>
+    </div>
   );
 }
 

@@ -6,6 +6,7 @@ module.exports = {
         "glass-pattern": "url('/src/static/banner.webp')",
         "moon-pattern": "url('/src/static/moon.png')",
         "shiny-pattern": "url('/src/static/pokemonbg.png')",
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
       }),
       fontFamily: {
         sanss: ["Festive", "Noto Serif KR"],

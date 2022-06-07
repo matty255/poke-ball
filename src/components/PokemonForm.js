@@ -48,34 +48,49 @@ const PokemonForm = () => {
 
   return (
     <>
-      <div className="flex justify-center items-center mt-4">
-        <form onSubmit={handleFormSubmit}>
-          <input type="text" placeholder="여기" onChange={handleNameOnChange} />
-          <button onClick={callPokemon}>랜덤 글자 입력하고 클릭!</button>
-        </form>
-      </div>
-
-      {pokemon && pokemon.id && (
-        <div className="mx-auto flex flex-col justify-center items-center">
-          <img
-            src={pokemon?.img}
-            alt=""
-            className="animate-bounce object-contain max-w-fit"
-          />
-          <p>{translateName(pokemon?.id)}</p>
-          <button onClick={() => navigate("/poke-box")}>
+      <div className="mt-4 w-full h-screen">
+        <div className="flex justify-center items-center flex-col gap-10">
+          <h1 className="text-4xl dark:text-white">포켓몬 랜덤뽑기</h1>
+          <p className="text-xl dark:text-white">
+            포켓몬을 무작위로 소환해 잡을 수 있어요!
+          </p>
+          <form onSubmit={handleFormSubmit}>
+            <input
+              type="text"
+              placeholder="여기"
+              className="ring-2 ring-yellow-400 outline-none"
+              onChange={handleNameOnChange}
+            />
             <button
-              onClick={captureFB({
-                pokemonId: pokemon?.id,
-                imgUrl: pokemon?.img,
-                uid: user?.uid,
-              })}
+              onClick={callPokemon}
+              className="rounded-md dark:text-white ml-3 border hover:bg-amber-400 active:bg-amber-600 hover:text-white"
             >
-              추가+
+              랜덤 글자 입력하고 클릭!
             </button>
-          </button>
+          </form>
+          {pokemon && pokemon.id && (
+            <div className="mx-auto flex flex-col justify-center items-center">
+              <img
+                src={pokemon?.img}
+                alt=""
+                className="animate-bounce object-contain max-w-fit"
+              />
+              <p>{translateName(pokemon?.id)}</p>
+              <button onClick={() => navigate("/poke-box")}>
+                <button
+                  onClick={captureFB({
+                    pokemonId: pokemon?.id,
+                    imgUrl: pokemon?.img,
+                    uid: user?.uid,
+                  })}
+                >
+                  추가+
+                </button>
+              </button>
+            </div>
+          )}
         </div>
-      )}
+      </div>
     </>
   );
 };

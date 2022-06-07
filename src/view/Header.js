@@ -5,23 +5,26 @@ import PokeBall from "../static/poke-ball.png";
 
 const Header = () => {
   return (
-    <div className="">
+    <div className="font-bold">
       <div className="bg-slate-600 p-2 bg-glass-pattern bg-center">
         <Link
           to="/"
-          className="p-2 md:p-4 text-sm md:text-base text-white box-decoration-clone"
+          className="p-2 md:p-4 text-sm md:text-base text-white box-decoration-clone
+          drop-shadow-lg"
         >
           HOME
         </Link>
         <Link
           to="/poke-box"
-          className="p-2 md:p-4 text-sm md:text-base text-white box-decoration-clone"
+          className="p-2 md:p-4 text-sm md:text-base text-white box-decoration-clone
+          drop-shadow-lg"
         >
           포켓몬박스
         </Link>
         <Link
           to="/poke-custom"
-          className="p-2 md:p-4 text-sm md:text-base text-white box-decoration-clone"
+          className="p-2 md:p-4 text-sm md:text-base text-white box-decoration-clone
+          drop-shadow-lg"
         >
           검색하기
         </Link>

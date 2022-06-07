@@ -15,14 +15,14 @@ export const SignIn = () => {
     useSignInWithFacebook(auth);
 
   if (loading || loadingFace) {
-    return <p className="text-white">Loading...</p>;
+    return <p className="text-white drop-shadow-lg">Loading...</p>;
   }
   if (user || userFace) {
     return <p>접속중</p>;
   } else
     return (
       <>
-        <div className="flex flex-row justify-end items-center gap-2">
+        <div className="flex flex-row justify-end items-center gap-2 drop-shadow-lg">
           <button onClick={() => signInWithGoogle()}>
             <img src={GoogleIcon} alt="" />
           </button>

@@ -6,8 +6,8 @@ import { AuthContext } from "../hooks/UserContext";
 import tw from "tailwind-styled-components";
 
 const Card = tw.div`
- rounded-md md:w-60 lg:w-64 py-3
- items-center bg-[#FFFFFF80] shadow-md
+ rounded-md md:w-60 lg:w-64 py-3 mb-1
+ items-center bg-[#FFFFFF90] dark:brightness-110 shadow-md dark:drop-shadow-xl
 `;
 
 const TitleName = tw.h2`
