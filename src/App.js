@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <AuthProvider>
-        <div className="App  max-w-4xl mx-auto font-sanss2 ">
+        <div className="App  max-w-4xl mx-auto font-sanss2 dark:bg-gray-700">
           <Header />
           <Routes>
             <Route path="/" element={<PokemonList />} />
