@@ -1,5 +1,5 @@
 import { auth } from "../api/firebase";
-import React, { useState, useContext } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../hooks/UserContext";
 import {
   useSignInWithGoogle,

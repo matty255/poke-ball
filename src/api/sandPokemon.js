@@ -2,17 +2,10 @@ import {
   getFirestore,
   collection,
   addDoc,
-  query,
-  orderBy,
-  limit,
-  onSnapshot,
-  setDoc,
-  updateDoc,
   deleteDoc,
   doc,
   serverTimestamp,
 } from "firebase/firestore";
-import { app } from "../api/firebase";
 
 // Saves a new message to Cloud Firestore.
 export async function savePokemon({ pokemonId, imgUrl, uid }) {

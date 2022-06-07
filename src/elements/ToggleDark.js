@@ -1,6 +1,5 @@
 import { useState } from "react";
 import tw from "tailwind-styled-components";
-import pika from "../static/pika.gif";
 import "./Toggle.css";
 import DarkmodeIcon from "../static/darkmodeIcon.png";
 import SunIcon from "../static/sunIcon.png";

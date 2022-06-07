@@ -1,6 +1,6 @@
-import { useContext, useRef } from "react";
+import { useContext } from "react";
 import { PokemonContext } from "../hooks/usePokemonContext";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { translateName } from "../hooks/useTranslateName";
 import { AuthContext } from "../hooks/UserContext";
 import tw from "tailwind-styled-components";

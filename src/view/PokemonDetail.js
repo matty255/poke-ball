@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { PokemonContext } from "../hooks/usePokemonContext";
-import { useNavigate, useLocation, Link } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useGenerateNumber } from "../hooks/useGenerateNumber";
 import axios from "axios";
 import { translateName } from "../hooks/useTranslateName";
