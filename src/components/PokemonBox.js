@@ -6,18 +6,21 @@ const PokemonBox = () => {
   const { user } = useContext(AuthContext);
 
   return (
-    <div>
+    <>
       {!user ? (
         <p>"로그인하세요!"</p>
       ) : (
         <>
-          <div className="mx-auto text-right">
-            <h2>포켓몬 박스</h2>
+          <div className="flex justify-center flex-col md:flex-row">
+            <h1 className="text-4xl p-8 lg:p-4 mb-5 overline decoration-sky-300 mx-auto">
+              포켓몬 박스
+            </h1>
+            {CapturedPokemons()}
           </div>
-          <div className="flex flex-row flex-wrap ">{CapturedPokemons()}</div>
+          <div className="flex justify-center items-center mx-auto"></div>
         </>
       )}
-    </div>
+    </>
   );
 };
 

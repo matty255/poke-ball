@@ -16,32 +16,33 @@ export const CapturedPokemons = () => {
     }
   );
   return (
-    <div>
+    <div className="">
+      <div className="flex flex-col sm:flex-row flex-wrap items-center sm:justify-around md:justify-start md:ml-4">
+        {value && (
+          <>
+            {value.docs.map((doc) => (
+              <div key={doc.id}>
+                {userId && userId === doc.data().uid ? (
+                  <>
+                    <MyPokemonCard
+                      uid={doc.data().uid}
+                      pokemonId={doc.data().pokemonId}
+                      imgUrl={doc.data().imgUrl}
+                      type="release"
+                      id={doc.id}
+                    />
+                  </>
+                ) : (
+                  ""
+                )}
+              </div>
+            ))}
+          </>
+        )}
+      </div>
+      <p className="text-center">포켓몬을 잡아 박스에 넣어보세요!</p>
       {error && <strong>Error: {JSON.stringify(error)}</strong>}
       {loading && <span>Collection: Loading...</span>}
-
-      {value && (
-        <div className="flex flex-row flex-wrap items-center justify-start gap-4">
-          {value.docs.map((doc) => (
-            <div key={doc.id}>
-              {userId && userId === doc.data().uid ? (
-                <>
-                  <MyPokemonCard
-                    uid={doc.data().uid}
-                    pokemonId={doc.data().pokemonId}
-                    imgUrl={doc.data().imgUrl}
-                    type="release"
-                    id={doc.id}
-                  />
-                </>
-              ) : (
-                ""
-              )}
-            </div>
-          ))}
-        </div>
-      )}
-      <p>포켓몬을 잡아 박스에 넣어보세요!</p>
     </div>
   );
 };

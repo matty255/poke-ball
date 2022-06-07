@@ -35,10 +35,6 @@ const ToggleDark = () => {
               )}
             </div>
           </div>
-
-          <div className="ml-2 text-gray-700 font-medium">
-            {isChecked ? <p>darkmode off</p> : <p>darkmode on</p>}
-          </div>
         </label>
       </div>
     </Outter>

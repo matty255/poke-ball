@@ -36,10 +36,6 @@ const Toggle = () => {
               )}
             </div>
           </div>
-
-          <div className="ml-2 text-gray-700 font-medium">
-            {isChecked ? <p>to Korean</p> : <p>English on</p>}
-          </div>
         </label>
       </div>
     </Outter>

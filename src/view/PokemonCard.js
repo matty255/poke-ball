@@ -25,7 +25,6 @@ const CatchButton = tw.button`
 
 const FlexBox = tw.div`
 flex flex-row justify-center md:justify-end items-center gap-2 md:mr-5
-
 `;
 
 const PokemonCard = ({ pokemon, image, type }) => {

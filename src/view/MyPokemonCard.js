@@ -1,19 +1,53 @@
-import { useState, useEffect, useContext, useRef } from "react";
-import { PokemonContext } from "../hooks/usePokemonContext";
-import { useNavigate } from "react-router-dom";
 import { translateName } from "../hooks/useTranslateName";
-import { AuthContext } from "../hooks/UserContext";
 import { releasePokemon } from "../api/sandPokemon";
+import { useNavigate, Link } from "react-router-dom";
+import tw from "tailwind-styled-components";
+
+const Card = tw.div`
+ rounded-md w-[14rem] md:w-52 lg:w-64 py-3 m-5 md:-ml-3 lg:-ml-2
+ items-center bg-[#FFFFFF80] shadow-md 
+`;
+
+const TitleName = tw.h2`
+text-xl mr-5 font-semibold tracking-wider text-right
+`;
+
+const CardImage = tw.img`
+animate-bounce p-4 opacity-100 drop-shadow-2xl
+`;
+
+const CatchButton = tw.button`
+ border text-sm rounded-md hover:bg-blue-300 hover:text-white
+ hover:border-blue-300 active:bg-yellow-200 active:border-yellow-200
+`;
+
+const FlexBox = tw.div`
+flex flex-row justify-center md:justify-end items-center gap-2 md:mr-5
+`;
 
 const MyPokemonCard = ({ uid, pokemonId, imgUrl, type, id }) => {
+  let userId = uid;
+  let navigate = useNavigate();
+
+  const ClickToShare = () => {
+    navigate(`/detail/${pokemonId}`, {
+      state: {
+        image: imgUrl,
+        type: type,
+        pokemonId: pokemonId,
+      },
+    });
+  };
+
   return (
-    <div className="p-4 m-2 border border-gray-400 rounded-md bg-white ">
-      <p>{translateName(pokemonId)}</p>
-      <img src={imgUrl} alt="" className="animate-bounce" />
-      <button className="" onClick={() => releasePokemon(id)}>
-        놓아주기
-      </button>
-    </div>
+    <Card>
+      <TitleName>{translateName(pokemonId)}</TitleName>
+      <CardImage src={imgUrl} alt="" />
+      <FlexBox>
+        <CatchButton onClick={() => releasePokemon(id)}>놓아주기</CatchButton>
+        <CatchButton onClick={ClickToShare}>공던지기+</CatchButton>
+      </FlexBox>
+    </Card>
   );
 };
 
