@@ -5,6 +5,8 @@ import {
   useSignInWithGoogle,
   useSignInWithFacebook,
 } from "react-firebase-hooks/auth";
+import GoogleIcon from "../static/googleIcon.png";
+import FacebookIcon from "../static/facebookIcon.png";
 
 export const SignIn = () => {
   const { user } = useContext(AuthContext);
@@ -14,7 +16,7 @@ export const SignIn = () => {
   console.log(errorFace);
 
   if (loading || loadingFace) {
-    return <p>Loading...</p>;
+    return <p className="text-white">Loading...</p>;
   }
   if (user || userFace) {
     return <p>접속중</p>;
@@ -22,8 +24,12 @@ export const SignIn = () => {
     return (
       <>
         <div className="flex flex-row justify-end items-center gap-2">
-          <button onClick={() => signInWithGoogle()}>구글로그인</button>
-          <button onClick={() => signInWithFacebook()}>페이스북로그인</button>
+          <button onClick={() => signInWithGoogle()}>
+            <img src={GoogleIcon} alt="" />
+          </button>
+          <button onClick={() => signInWithFacebook()}>
+            <img src={FacebookIcon} alt="" />
+          </button>
         </div>
       </>
     );
