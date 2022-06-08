@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import tw from "tailwind-styled-components";
 import "./Toggle.css";
 import DarkmodeIcon from "../static/darkmodeIcon.png";
 import SunIcon from "../static/sunIcon.png";
+import { DarkContext } from "../hooks/DarkContext";
 
-const ToggleDark = () => {
-  const [isChecked, setIsChecked] = useState(false);
+const ToggleDark = (darkMode, setDarkMode) => {
+  const { theme, setTheme } = useContext(DarkContext);
+
+  const [isChecked, setIsChecked] = useState(theme === "dark" ? true : false);
+
   const handleChange = () => {
     setIsChecked(!isChecked);
   };
@@ -18,6 +22,8 @@ const ToggleDark = () => {
             <input
               type="checkbox"
               id="toggleA"
+              checked={isChecked}
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               onChange={handleChange}
               className="sr-only peer"
             />
