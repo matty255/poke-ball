@@ -1,13 +1,18 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import tw from "tailwind-styled-components";
 import "./Toggle.css";
 import KoreaIcon from "../static/koreaIcon.png";
 import UsaIcon from "../static/usaIcon.png";
+import i18n from "i18next";
+import { LangContext } from "../hooks/LangContext";
 
 const Toggle = () => {
-  const [isChecked, setIsChecked] = useState(false);
+  const { lang, setLang } = useContext(LangContext);
+  const [isChecked, setIsChecked] = useState(lang === "ko-KR" ? false : true);
+
   const handleChange = () => {
-    setIsChecked(!isChecked);
+    setIsChecked((isChecked) => !isChecked);
+    setLang(lang === "ko-KR" ? "en-US" : "ko-KR");
   };
 
   return (
@@ -19,6 +24,9 @@ const Toggle = () => {
               type="checkbox"
               id="toggleB"
               onChange={handleChange}
+              onClick={() =>
+                i18n.changeLanguage(isChecked === false ? "en-US" : "ko-KR")
+              }
               className="sr-only peer"
             />
 

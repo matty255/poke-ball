@@ -9,6 +9,8 @@ import tw from "tailwind-styled-components";
 import Refresh from "../static/refresh.png";
 import ToggleDark from "../elements/ToggleDark";
 import ToggleLang from "../elements/ToggleLang";
+import { onChangeLang } from "../hooks/useTranslateMenu";
+import { useTranslation } from "react-i18next";
 
 const CardBox = tw.div`
 flex flex-row flex-wrap items-center gap-3 gap-y-5 md:gap-y-6
@@ -16,11 +18,13 @@ justify-around mx-auto
 `;
 
 const PokemonList = () => {
+  const { t } = useTranslation();
   const num = useGenerateNumber(1, 880);
   const [loading, setLoading] = useState(true);
   const [pageNum, setPageNum] = useState(
     `https://pokeapi.co/api/v2/pokemon/?limit=20&offset=${num}`
   );
+
   const [next, setNext] = useState(true);
   const [lastElement, setLastElement] = useState(null);
   const [end, setEnd] = useState(false);
@@ -85,6 +89,7 @@ const PokemonList = () => {
           <ToggleDark />
           <ToggleLang />
         </div>
+
         <button
           onClick={callList}
           className="w-12 p-2 mr-2 hover:animate-spin transition-transform delay-300 duration-500"

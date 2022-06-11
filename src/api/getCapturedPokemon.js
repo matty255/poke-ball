@@ -5,6 +5,7 @@ import { AuthContext } from "../hooks/UserContext";
 import { useContext } from "react";
 import MyPokemonCard from "../view/MyPokemonCard";
 import tw from "tailwind-styled-components";
+import { useTranslation } from "react-i18next";
 
 const Card = tw.div`
  rounded-md w-[12rem] lg:w-[14rem] py-3 m-5 md:-ml-3 lg:-ml-2
@@ -12,7 +13,7 @@ const Card = tw.div`
 `;
 export const CapturedPokemons = () => {
   const { user } = useContext(AuthContext);
-
+  const { t } = useTranslation();
   let userId = user?.uid;
   const [value, loading, error] = useCollection(
     collection(getFirestore(app), "pokemon"),
@@ -25,7 +26,6 @@ export const CapturedPokemons = () => {
     (doc) => doc.data().uid === userId
   );
 
-  console.log(capturedPokemonList);
   return (
     <div className="">
       <div className="flex flex-col sm:flex-row flex-wrap items-center sm:justify-around md:justify-start md:ml-4">
@@ -59,7 +59,7 @@ export const CapturedPokemons = () => {
       )}
 
       <p className="text-center dark:text-white w-full mr-10">
-        포켓몬을 잡아 박스에 넣어보세요!
+        {t("capture_pokemon_putting_in_the_box")}
       </p>
       {error && <strong>Error: {JSON.stringify(error)}</strong>}
       {loading && <span>Collection: Loading...</span>}

@@ -3,9 +3,11 @@ import { CapturedPokemons } from "../api/getCapturedPokemon";
 import { AuthContext } from "../hooks/UserContext";
 import ToggleDark from "../elements/ToggleDark";
 import ToggleLang from "../elements/ToggleLang";
+import { useTranslation } from "react-i18next";
 
 const PokemonBox = () => {
   const { user } = useContext(AuthContext);
+  const { t } = useTranslation();
 
   return (
     <>
@@ -13,21 +15,21 @@ const PokemonBox = () => {
         <ToggleDark />
         <ToggleLang />
       </div>
-      {!user ? (
+      {!user && (
         <div
           className="flex justify-center flex-col md:flex-row bg-shiny-pattern bg-repeat-y
         h-screen"
         >
           <p className="text-2xl p-6 dark:text-white">
-            "로그인하고 포켓몬을 모아보세요!"
+            {t("log_in_and_capture_pokemons")}
           </p>
         </div>
-      ) : (
+      )}
+      {user && (
         <>
           <div className="flex justify-center flex-col md:flex-row bg-shiny-pattern bg-repeat-y min-h-screen">
             <h1 className="text-4xl p-4 mb-5 overline decoration-sky-300 mx-auto dark:text-white md:w-36">
-              포켓몬 <br className="hidden md:content" />
-              박스
+              {t("pokemon_box")}
             </h1>
 
             {CapturedPokemons()}

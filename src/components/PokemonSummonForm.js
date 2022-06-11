@@ -5,9 +5,11 @@ import { useGenerateNumber } from "../hooks/useGenerateNumber";
 import { AuthContext } from "../hooks/UserContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const PokemonForm = () => {
   let navigate = useNavigate();
+  const { t } = useTranslation();
   const [pokemonName, setPokemonName] = useState();
   const [pokemon, setPokemon] = useState({});
   const num_Shiny = useGenerateNumber(1, 10);
@@ -50,9 +52,11 @@ const PokemonForm = () => {
     <>
       <div className="mt-4 w-full h-screen">
         <div className="flex justify-center items-center flex-col gap-10">
-          <h1 className="text-4xl dark:text-white">포켓몬 랜덤뽑기</h1>
+          <h1 className="text-4xl dark:text-white uppercase">
+            {t("random_pokemon_summon")}
+          </h1>
           <p className="text-xl dark:text-white p-5">
-            포켓몬을 무작위로 소환해 잡을 수 있어요!
+            {t("type_anything_and_press_enter")}
           </p>
           <form
             onSubmit={handleFormSubmit}
@@ -60,7 +64,7 @@ const PokemonForm = () => {
           >
             <input
               type="text"
-              placeholder="여기"
+              placeholder={t("here")}
               className="ring-2 ring-yellow-400 outline-none"
               onChange={handleNameOnChange}
             />
@@ -68,7 +72,7 @@ const PokemonForm = () => {
               onClick={callPokemon}
               className="rounded-md dark:text-white ml-3 border hover:bg-amber-400 active:bg-amber-600 hover:text-white"
             >
-              랜덤 글자 입력하고 클릭!
+              {t("type_random_text")}
             </button>
           </form>
           {pokemon && pokemon.id && (
