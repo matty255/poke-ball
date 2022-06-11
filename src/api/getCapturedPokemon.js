@@ -4,7 +4,12 @@ import { useCollection } from "react-firebase-hooks/firestore";
 import { AuthContext } from "../hooks/UserContext";
 import { useContext } from "react";
 import MyPokemonCard from "../view/MyPokemonCard";
+import tw from "tailwind-styled-components";
 
+const Card = tw.div`
+ rounded-md w-[12rem] lg:w-[14rem] py-3 m-5 md:-ml-3 lg:-ml-2
+ items-center bg-[#FFFFFF80] shadow-md h-44
+`;
 export const CapturedPokemons = () => {
   const { user } = useContext(AuthContext);
 
@@ -15,6 +20,12 @@ export const CapturedPokemons = () => {
       snapshotListenOptions: { includeMetadataChanges: true },
     }
   );
+
+  const capturedPokemonList = value?.docs.filter(
+    (doc) => doc.data().uid === userId
+  );
+
+  console.log(capturedPokemonList);
   return (
     <div className="">
       <div className="flex flex-col sm:flex-row flex-wrap items-center sm:justify-around md:justify-start md:ml-4">
@@ -39,7 +50,15 @@ export const CapturedPokemons = () => {
           </>
         )}
       </div>
-      <p className="text-center dark:text-white">
+      {capturedPokemonList <= 0 && (
+        <div className="flex justify-center flex-col md:flex-row items-center">
+          <Card />
+          <Card />
+          <Card />
+        </div>
+      )}
+
+      <p className="text-center dark:text-white w-full mr-10">
         포켓몬을 잡아 박스에 넣어보세요!
       </p>
       {error && <strong>Error: {JSON.stringify(error)}</strong>}

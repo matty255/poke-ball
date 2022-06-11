@@ -51,10 +51,13 @@ const PokemonForm = () => {
       <div className="mt-4 w-full h-screen">
         <div className="flex justify-center items-center flex-col gap-10">
           <h1 className="text-4xl dark:text-white">포켓몬 랜덤뽑기</h1>
-          <p className="text-xl dark:text-white">
+          <p className="text-xl dark:text-white p-5">
             포켓몬을 무작위로 소환해 잡을 수 있어요!
           </p>
-          <form onSubmit={handleFormSubmit}>
+          <form
+            onSubmit={handleFormSubmit}
+            className="flex flex-col md:flex-row justify-center items-center"
+          >
             <input
               type="text"
               placeholder="여기"

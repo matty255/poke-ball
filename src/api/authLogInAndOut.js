@@ -27,10 +27,10 @@ export const SignIn = () => {
       <>
         <div className="flex flex-row justify-end items-center gap-2 drop-shadow-lg">
           <button onClick={() => signInWithGoogle()}>
-            <img src={GoogleIcon} alt="" />
+            <img src={GoogleIcon} alt="" className="hover:scale-110" />
           </button>
           <button onClick={() => signInWithFacebook()}>
-            <img src={FacebookIcon} alt="" />
+            <img src={FacebookIcon} alt="" className="hover:scale-110" />
           </button>
         </div>
       </>

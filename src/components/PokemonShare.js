@@ -3,28 +3,17 @@ import { translateName } from "../hooks/useTranslateName";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
 import tw from "tailwind-styled-components";
-import {
-  FacebookShareButton,
-  FacebookIcon,
-  TwitterIcon,
-  TwitterShareButton,
-} from "react-share";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import C from "../static/shareIcon.png";
 import { SignIn } from "../api/authLogInAndOut";
 
-const CatchButton = tw.button`
- border text-sm rounded-md hover:bg-blue-300 hover:text-white
- hover:border-blue-300 active:bg-yellow-200 active:border-yellow-200
- dark:text-white 
-`;
-
 const FlexBox = tw.div`
-flex flex-col justify-center items-center gap-4 mt-5
+flex flex-row justify-center items-center gap-4 mt-5
 `;
 
 const ShareBox = tw.div`
-flex flex-row gap-2
+flex flex-row gap-2 text-lg border rounded-full hover:bg-yellow-300 hover:text-white
+cursor-pointer active:bg-yellow-200 active:border-yellow-200
 `;
 
 const PokemonShare = () => {
@@ -83,25 +72,10 @@ const PokemonShare = () => {
         </div>
         <FlexBox>
           <SignIn />
-          <p className="dark:text-white mt-3">가입하기 ⬆️ sns로 공유하기 ⬇️</p>
           <ShareBox>
-            <FacebookShareButton url={currentUrl}>
-              <FacebookIcon
-                size={48}
-                round={true}
-                borderRadius={24}
-              ></FacebookIcon>
-            </FacebookShareButton>
-            <TwitterShareButton url={currentUrl}>
-              <TwitterIcon
-                size={48}
-                round={true}
-                borderRadius={24}
-              ></TwitterIcon>
-            </TwitterShareButton>
             <CopyToClipboard text={currentUrl}>
               <img
-                className="w-12 cursor-pointer"
+                className="w-8 mt-1 cursor-pointer"
                 onClick={() => alert("주소가 복사되었습니다!")}
                 src={C}
                 alt=""
