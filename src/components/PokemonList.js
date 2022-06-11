@@ -9,7 +9,6 @@ import tw from "tailwind-styled-components";
 import Refresh from "../static/refresh.png";
 import ToggleDark from "../elements/ToggleDark";
 import ToggleLang from "../elements/ToggleLang";
-import { onChangeLang } from "../hooks/useTranslateMenu";
 import { useTranslation } from "react-i18next";
 
 const CardBox = tw.div`

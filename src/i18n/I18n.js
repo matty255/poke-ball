@@ -14,7 +14,6 @@ const init = (lang) => {
   i18n.use(initReactI18next).init({
     resources: resource,
     fallbackLng: "ko-KR",
-    debug: true,
     interpolation: {
       escapeValue: true,
       prefix: "{",

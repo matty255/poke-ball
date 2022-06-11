@@ -10,5 +10,8 @@
     "random_pokemon_summon" : "random pokemon summon",
     "type_anything_and_press_enter" : "type anything and press enter! you'll get a pokemon.",
     "type_random_text" : "type_random_text",
-    "here":"here"
+    "here":"here",
+    "summon" : "Wild {name} appeared!",
+    "goBack":"go back",
+    "getShiny": "Shiny appeared!!!"
 }

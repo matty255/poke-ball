@@ -13,6 +13,24 @@ module.exports = {
         sanss: ["Festive", "Noto Serif KR"],
         sanss2: ["Poor Story", "Noto Serif KR"],
       },
+      keyframes: {
+        shiny: {
+          "0%": {
+            transform: "scale(1) rotateZ(0)",
+          },
+
+          "50%": {
+            transform: "scale(2) rotateZ(180deg)",
+          },
+
+          "100%": {
+            transform: "scale(1) rotateZ(360deg)",
+          },
+        },
+      },
+      animation: {
+        shiny: "shiny .85s linear both",
+      },
     },
     screens: {
       sm: "640px",

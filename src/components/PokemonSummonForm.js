@@ -6,6 +6,12 @@ import { AuthContext } from "../hooks/UserContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import tw from "tailwind-styled-components";
+
+const CatchButton = tw.button`
+ border text-sm rounded-md hover:bg-blue-300 hover:text-white px-1 mx-1 lg:px-0 lg:mx-0
+ hover:border-blue-300 active:bg-yellow-200 active:border-yellow-200 dark:text-white
+`;
 
 const PokemonForm = () => {
   let navigate = useNavigate();
@@ -25,8 +31,8 @@ const PokemonForm = () => {
   };
 
   const callPokemon = () => {
-    if (!user) return alert("로그인해주세요!");
-    if (!pokemonName) return alert("내용을 입력해주세요!");
+    if (!user) return alert(t("log_in_and_capture_pokemons"));
+    if (!pokemonName) return alert(t("type_anything_and_press_enter"));
     try {
       setTimeout(async () => {
         const response = await axios.get(
@@ -36,7 +42,7 @@ const PokemonForm = () => {
         const id = response.data.id;
         if (num_Shiny > 6) {
           const img = response.data.sprites.front_shiny;
-          alert("이로치 등장!");
+          alert(t("getShiny"));
           setPokemon({ id, img });
         } else {
           const img = response.data.sprites.front_default;
@@ -70,7 +76,7 @@ const PokemonForm = () => {
             />
             <button
               onClick={callPokemon}
-              className="rounded-md dark:text-white ml-3 border hover:bg-amber-400 active:bg-amber-600 hover:text-white"
+              className="rounded-md dark:text-white ml-3 border hover:bg-amber-400 active:bg-amber-600 hover:text-white opacity-0 md:opacity-100"
             >
               {t("type_random_text")}
             </button>
@@ -82,18 +88,18 @@ const PokemonForm = () => {
                 alt=""
                 className="animate-bounce object-contain max-w-fit"
               />
-              <p>{translateName(pokemon?.id)}</p>
-              <button onClick={() => navigate("/poke-box")}>
-                <button
+              <p className="text-2xl dark:text-white">???</p>
+              <CatchButton onClick={() => navigate("/poke-box")}>
+                <div
                   onClick={captureFB({
                     pokemonId: pokemon?.id,
                     imgUrl: pokemon?.img,
                     uid: user?.uid,
                   })}
                 >
-                  추가+
-                </button>
-              </button>
+                  {t("just_capture")}
+                </div>
+              </CatchButton>
             </div>
           )}
         </div>

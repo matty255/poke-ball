@@ -10,5 +10,8 @@
     "random_pokemon_summon" : "포켓몬 랜덤 뽑기",
     "type_anything_and_press_enter" : "포켓몬을 무작위로 소환해 잡을 수 있어요!",
     "type_random_text" : "랜덤 글자 입력하고 클릭!",
-    "here":"여기"
+    "here":"여기",
+    "summon" : "야생의 {name}이(가) 나타났다!",
+    "goBack":"돌아가기",
+    "getShiny": "이로치 등장!!!"
 }
