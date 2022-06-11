@@ -25,10 +25,9 @@ export const CapturedPokemons = () => {
                 {userId && userId === doc.data().uid ? (
                   <>
                     <MyPokemonCard
-                      uid={doc.data().uid}
                       pokemonId={doc.data().pokemonId}
                       imgUrl={doc.data().imgUrl}
-                      type="release"
+                      type={doc.data().type}
                       id={doc.id}
                     />
                   </>
@@ -40,7 +39,9 @@ export const CapturedPokemons = () => {
           </>
         )}
       </div>
-      <p className="text-center">포켓몬을 잡아 박스에 넣어보세요!</p>
+      <p className="text-center dark:text-white">
+        포켓몬을 잡아 박스에 넣어보세요!
+      </p>
       {error && <strong>Error: {JSON.stringify(error)}</strong>}
       {loading && <span>Collection: Loading...</span>}
     </div>

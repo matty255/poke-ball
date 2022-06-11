@@ -64,6 +64,7 @@ const PokemonCard = ({ pokemon, image, type }) => {
                   pokemonId: pokemonIndex,
                   imgUrl: image,
                   uid: user?.uid,
+                  type: 0,
                 })}
               >
                 그냥잡기+

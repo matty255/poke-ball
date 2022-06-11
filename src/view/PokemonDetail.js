@@ -23,10 +23,10 @@ const PokemonDetail = () => {
       // console.log(response.data);
       if (num_Shiny > 6) {
         const img = response.data.sprites?.front_shiny;
-        setDetail({ id, img, num_Shiny });
+        setDetail({ id, img, num_Shiny, type: 1 });
       } else {
         const img = response.data.sprites.front_default;
-        setDetail({ id, img });
+        setDetail({ id, img, type: 0 });
       }
     } catch (error) {
       console.log("포켓몬 정보가 없어요!");
@@ -39,7 +39,7 @@ const PokemonDetail = () => {
 
   return (
     <>
-      <div className="p-4 m-2 border border-gray-400 rounded-md bg-white flex items-center flex-col">
+      <div className="p-4 m-2 border border-gray-400 rounded-md bg-white flex items-center flex-col h-screen">
         <div>
           {detail.num_Shiny > 6 && <p>이로치 등장!!!</p>}
           <p>{translateName(id)}</p>
@@ -50,6 +50,7 @@ const PokemonDetail = () => {
                 pokemonId: detail.id,
                 imgUrl: detail.img,
                 uid: user?.uid,
+                type: detail.type,
               })}
             >
               공던지기+

@@ -25,18 +25,13 @@ const FlexBox = tw.div`
 flex flex-row justify-center md:justify-end items-center gap-2 md:mr-5
 `;
 
-const MyPokemonCard = ({ uid, pokemonId, imgUrl, type, id }) => {
-  let userId = uid;
+const MyPokemonCard = ({ pokemonId, imgUrl, type, id }) => {
   let navigate = useNavigate();
+  let userNickName = "포켓몬좋아!";
 
   const ClickToShare = () => {
-    navigate(`/detail/${pokemonId}`, {
-      state: {
-        image: imgUrl,
-        type: type,
-        pokemonId: pokemonId,
-      },
-    });
+    alert("이름을 입력해주세요!");
+    navigate(`/share/${pokemonId}-${type}-${userNickName}`);
   };
 
   return (
@@ -45,7 +40,7 @@ const MyPokemonCard = ({ uid, pokemonId, imgUrl, type, id }) => {
       <CardImage src={imgUrl} alt="" />
       <FlexBox>
         <CatchButton onClick={() => releasePokemon(id)}>놓아주기</CatchButton>
-        <CatchButton onClick={ClickToShare}>공던지기+</CatchButton>
+        <CatchButton onClick={ClickToShare}>공유하기</CatchButton>
       </FlexBox>
     </Card>
   );
