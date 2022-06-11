@@ -77,7 +77,7 @@ const PokemonList = () => {
 
   return (
     <div
-      className="mx-auto text-right bg-moon-pattern bg-fixed bg-center bg-no-repeat 
+      className="mx-auto text-right bg-moon-pattern bg-fixed bg-center bg-no-repeat dark:bg-shiny-pattern
     "
     >
       <div className="flex flex-row justify-between">

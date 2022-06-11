@@ -3,6 +3,15 @@ import { translateName } from "../hooks/useTranslateName";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
 import tw from "tailwind-styled-components";
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  TwitterIcon,
+  TwitterShareButton,
+} from "react-share";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import C from "../static/shareIcon.png";
+import { SignIn } from "../api/authLogInAndOut";
 
 const CatchButton = tw.button`
  border text-sm rounded-md hover:bg-blue-300 hover:text-white
@@ -14,9 +23,14 @@ const FlexBox = tw.div`
 flex flex-col justify-center items-center gap-4 mt-5
 `;
 
+const ShareBox = tw.div`
+flex flex-row gap-2
+`;
+
 const PokemonShare = () => {
   let navigate = useNavigate();
   let location = useLocation();
+  const currentUrl = window.location.href;
   const pokemonInfo = location.pathname.split("/")[2];
   const pokemonId = pokemonInfo.split("-")[0];
   const isShiny = parseInt(pokemonInfo.split("-")[1]);
@@ -68,8 +82,32 @@ const PokemonShare = () => {
           )}
         </div>
         <FlexBox>
-          <CatchButton>공유하기</CatchButton>
-          <CatchButton>가입하고 나도 포켓몬 잡기</CatchButton>
+          <SignIn />
+          <p className="dark:text-white mt-3">가입하기 ⬆️ sns로 공유하기 ⬇️</p>
+          <ShareBox>
+            <FacebookShareButton url={currentUrl}>
+              <FacebookIcon
+                size={48}
+                round={true}
+                borderRadius={24}
+              ></FacebookIcon>
+            </FacebookShareButton>
+            <TwitterShareButton url={currentUrl}>
+              <TwitterIcon
+                size={48}
+                round={true}
+                borderRadius={24}
+              ></TwitterIcon>
+            </TwitterShareButton>
+            <CopyToClipboard text={currentUrl}>
+              <img
+                className="w-12 cursor-pointer"
+                onClick={() => alert("주소가 복사되었습니다!")}
+                src={C}
+                alt=""
+              />
+            </CopyToClipboard>
+          </ShareBox>
         </FlexBox>
       </div>
     </>

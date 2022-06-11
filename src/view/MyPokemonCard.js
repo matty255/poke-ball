@@ -4,7 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import tw from "tailwind-styled-components";
 
 const Card = tw.div`
- rounded-md w-[14rem] md:w-52 lg:w-64 py-3 m-5 md:-ml-3 lg:-ml-2
+ rounded-md w-[12rem] lg:w-[14rem] py-3 m-5 md:-ml-3 lg:-ml-2
  items-center bg-[#FFFFFF80] shadow-md 
 `;
 
