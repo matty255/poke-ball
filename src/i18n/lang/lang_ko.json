@@ -1,10 +1,11 @@
 {
     "test1": "한국어 테스트",
     "just_capture" : "그냥 잡기",
+    "shiny": "이로치",
     "capture_with_ball" : "공 던지기++",
     "release" : "놓아주기",
     "share_to_friend" : "공유하기",
-    "pokemon_box" : "포켓몬박스",
+    "pokemon_box" : "포켓몬 박스",
     "log_in_and_capture_pokemons" : "로그인하고 포켓몬을 모아보세요!",
     "capture_pokemon_putting_in_the_box" : "포켓몬을 잡아 박스에 넣어보세요!",
     "random_pokemon_summon" : "포켓몬 랜덤 뽑기",
@@ -13,5 +14,12 @@
     "here":"여기",
     "summon" : "야생의 {name}이(가) 나타났다!",
     "goBack":"돌아가기",
-    "getShiny": "이로치 등장!!!"
+    "getShiny": "이로치 등장!!!",
+    "capture" : "신난다! {capture}을(를) 잡았다!",
+    "capture_failed" : "이런... {capture}은(는) 도망쳤다.",
+    "catch_rate" : "포획확률",
+    "share_page" : "{user_name}님이 {user_pokemon}을(를) 자랑합니다.",
+    "copy" : "주소가 복사되었습니다.",
+    "title_your_name" : "포켓몬 공유하기!",
+    "type_your_name" : "공유페이지에 들어갈 이름을 입력해주세요!"
 }

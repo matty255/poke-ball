@@ -8,6 +8,7 @@ module.exports = {
         "moon-pattern": "url('/src/static/moon.png')",
         "shiny-pattern": "url('/src/static/pokemonbg.png')",
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "share-pattern": "url('/src/static/sharePage.png')",
       }),
       fontFamily: {
         sanss: ["Festive", "Noto Serif KR"],

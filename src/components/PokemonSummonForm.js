@@ -1,12 +1,13 @@
 import React, { useContext, useState } from "react";
 import { PokemonContext } from "../hooks/PokemonContext";
-import { translateName } from "../hooks/useTranslateName";
 import { useGenerateNumber } from "../hooks/useGenerateNumber";
 import { AuthContext } from "../hooks/UserContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import tw from "tailwind-styled-components";
+import ToggleDark from "../elements/ToggleDark";
+import ToggleLang from "../elements/ToggleLang";
 
 const CatchButton = tw.button`
  border text-sm rounded-md hover:bg-blue-300 hover:text-white px-1 mx-1 lg:px-0 lg:mx-0
@@ -38,15 +39,15 @@ const PokemonForm = () => {
         const response = await axios.get(
           `https://pokeapi.co/api/v2/pokemon/${num}/`
         );
-        console.log(response.data);
+
         const id = response.data.id;
         if (num_Shiny > 6) {
           const img = response.data.sprites.front_shiny;
           alert(t("getShiny"));
-          setPokemon({ id, img });
+          setPokemon({ id, img, type: 1 });
         } else {
           const img = response.data.sprites.front_default;
-          setPokemon({ id, img });
+          setPokemon({ id, img, type: 0 });
         }
       }, 100);
     } catch (error) {
@@ -56,6 +57,10 @@ const PokemonForm = () => {
 
   return (
     <>
+      <div className="flex flex-row p-3 gap-3 bg-amber-400 dark:bg-amber-900">
+        <ToggleDark />
+        <ToggleLang />
+      </div>
       <div className="mt-4 w-full h-screen">
         <div className="flex justify-center items-center flex-col gap-10">
           <h1 className="text-4xl dark:text-white uppercase">
@@ -95,6 +100,7 @@ const PokemonForm = () => {
                     pokemonId: pokemon?.id,
                     imgUrl: pokemon?.img,
                     uid: user?.uid,
+                    type: pokemon?.type,
                   })}
                 >
                   {t("just_capture")}

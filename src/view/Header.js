@@ -2,8 +2,12 @@ import { Link } from "react-router-dom";
 import SignInForm from "../components/UserSignInForm";
 import PikaHeader from "../static/PikaHeader.webp";
 import PokeBall from "../static/poke-ball.png";
+import { useContext } from "react";
+import { AuthContext } from "../hooks/UserContext";
 
 const Header = () => {
+  const { user } = useContext(AuthContext);
+
   return (
     <div className="font-bold">
       <div className="bg-slate-600 p-2 bg-glass-pattern bg-center">
@@ -14,13 +18,18 @@ const Header = () => {
         >
           HOME
         </Link>
-        <Link
-          to="/poke-box"
-          className="p-2 md:p-4 text-sm md:text-base text-white box-decoration-clone
+        {!user ? (
+          ""
+        ) : (
+          <Link
+            to="/poke-box"
+            className="p-2 md:p-4 text-sm md:text-base text-white box-decoration-clone
           drop-shadow-lg"
-        >
-          포켓몬박스
-        </Link>
+          >
+            포켓몬박스
+          </Link>
+        )}
+
         <Link
           to="/poke-custom"
           className="p-2 md:p-4 text-sm md:text-base text-white box-decoration-clone

@@ -16,7 +16,7 @@ const UserSignInForm = () => {
       ) : (
         <Link
           to="/"
-          className="p-2 md:p-4 text-sm md:text-base flex items-end md:absolute lg:fixed md:right-20 md:top-4 text-white drop-shadow-lg"
+          className="p-2 md:p-4 text-sm md:text-base flex items-end  text-white drop-shadow-lg"
           onClick={logout}
         >
           <img src={Logout} alt="Logout" className="drop-shadow-md" />

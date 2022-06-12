@@ -69,7 +69,7 @@ const PokemonDetail = () => {
     try {
       const response = await axios.get(url);
       // console.log(response.data);
-      if (num_Shiny > 2) {
+      if (num_Shiny > 6) {
         const img = response.data.sprites?.front_shiny;
         setDetail({ id, img, num_Shiny, type: 1 });
       } else {

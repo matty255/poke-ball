@@ -19,9 +19,7 @@ export const SignIn = () => {
     return <p className="text-white drop-shadow-lg">Loading...</p>;
   }
   if (user || userFace) {
-    return (
-      <p className="dark:text-white">나도 멋진 포켓몬을 잡으러 가볼까요?</p>
-    );
+    return <p className="dark:text-white">copy URL</p>;
   } else
     return (
       <>

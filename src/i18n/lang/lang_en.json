@@ -1,6 +1,7 @@
 {
     "test1": "english test",
     "just_capture" : "capture",
+    "shiny": "shiny",
     "capture_with_ball" : "capture with ball",
     "release" : "release",
     "share_to_friend" : "share to friend",
@@ -13,5 +14,12 @@
     "here":"here",
     "summon" : "Wild {name} appeared!",
     "goBack":"go back",
-    "getShiny": "Shiny appeared!!!"
+    "getShiny": "Shiny appeared!!!",
+    "capture" : "you've got {capture}!",
+    "capture_failed" : "sorry, you have missed {capture}!",
+    "catch_rate" : "catch rate",
+    "share_page" : "{user_name} is showing you {user_pokemon} proudly.",
+    "copy" : "you have copied this page's URL!",
+    "title_your_name" : "share pokemon!",
+    "type_your_name" : "to share your pokemon, type your name here."
 }

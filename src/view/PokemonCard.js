@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { PokemonContext } from "../hooks/PokemonContext";
 import { useNavigate } from "react-router-dom";
 import { translateName } from "../hooks/useTranslateName";
@@ -6,6 +6,7 @@ import { AuthContext } from "../hooks/UserContext";
 import tw from "tailwind-styled-components";
 import { LangContext } from "../hooks/LangContext";
 import { useTranslation } from "react-i18next";
+import { useGenerateNumber } from "../hooks/useGenerateNumber";
 
 const Card = tw.div`
  rounded-md md:w-60 lg:w-64 py-3 mb-1
@@ -36,6 +37,7 @@ const PokemonCard = ({ pokemon, image, type }) => {
   const { lang, setLang } = useContext(LangContext);
   let userId = user?.uid;
   let navigate = useNavigate();
+  let percent = useGenerateNumber(1, 100);
 
   const pokemonIndex =
     pokemon?.url.split("/")[pokemon.url.split("/").length - 2];
@@ -51,6 +53,37 @@ const PokemonCard = ({ pokemon, image, type }) => {
     });
   };
 
+  const JustCatch = (percent) => {
+    let prob = percent * 0.01;
+
+    let ran = Math.random();
+    if (prob > ran) {
+      alert(
+        t("capture", {
+          capture:
+            lang === "en-US"
+              ? translateName(pokemonIndex, 2)
+              : translateName(pokemonIndex, 3),
+        })
+      );
+      return captureFB({
+        pokemonId: pokemonIndex,
+        imgUrl: image,
+        uid: user?.uid,
+        type: 0,
+      });
+    } else {
+      alert(
+        t("capture_failed", {
+          capture:
+            lang === "en-US"
+              ? translateName(pokemonIndex, 2)
+              : translateName(pokemonIndex, 3),
+        })
+      );
+    }
+  };
+
   const youNeedToLogin = () => {
     alert("로그인하세요!");
   };
@@ -60,19 +93,15 @@ const PokemonCard = ({ pokemon, image, type }) => {
       <TitleName>
         {lang === "en-US" ? pokemon.name : translateName(pokemonIndex, 3)}
       </TitleName>
+      <p className="text-right mr-4">
+        {t("catch_rate")} {parseInt(percent)}%
+      </p>
       <CardImage src={image} alt="" />
       {type === "capture" && userId ? (
         <>
           <FlexBox>
             <div onClick={capture(pokemon)}>
-              <CatchButton
-                onClick={captureFB({
-                  pokemonId: pokemonIndex,
-                  imgUrl: image,
-                  uid: user?.uid,
-                  type: 0,
-                })}
-              >
+              <CatchButton onClick={() => JustCatch(percent)}>
                 {t("just_capture")}
               </CatchButton>
             </div>

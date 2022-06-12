@@ -4,10 +4,10 @@ import { useNavigate, Link } from "react-router-dom";
 import tw from "tailwind-styled-components";
 import { useTranslation } from "react-i18next";
 import { LangContext } from "../hooks/LangContext";
-import { useContext } from "react";
-
+import { useContext, setState } from "react";
+import Swal from "sweetalert2";
 const Card = tw.div`
- rounded-md w-[12rem] lg:w-[14rem] py-3 m-5 md:-ml-3 lg:-ml-2
+ rounded-md w-[12rem] py-3 m-5 md:-ml-3
  items-center bg-[#FFFFFF80] shadow-md 
 `;
 
@@ -30,13 +30,20 @@ flex flex-row justify-center md:justify-end items-center gap-2 md:mr-5
 
 const MyPokemonCard = ({ pokemonId, imgUrl, type, id }) => {
   let navigate = useNavigate();
-  let userNickName = "포켓몬좋아!";
   const { t } = useTranslation();
   const { lang, setLang } = useContext(LangContext);
 
   const ClickToShare = () => {
-    alert("이름을 입력해주세요!");
-    navigate(`/share/${pokemonId}-${type}-${userNickName}`);
+    Swal.fire({
+      title: t("title_your_name"),
+      text: t("type_your_name"),
+      input: "text",
+      showCancelButton: true,
+    }).then((result) => {
+      if (result?.value) {
+        navigate(`/share/${pokemonId}-${type}-${result.value}`);
+      }
+    });
   };
 
   return (
