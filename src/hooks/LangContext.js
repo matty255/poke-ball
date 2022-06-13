@@ -1,12 +1,12 @@
-import React from "react";
+import { createContext, useState, useEffect } from "react";
 
-export const LangContext = React.createContext();
+export const LangContext = createContext();
 
 const initialLang = window.navigator.language;
-export const LangProvider = ({ initialTheme, children }) => {
-  const [lang, setLang] = React.useState(initialLang);
+export const LangProvider = ({ children }) => {
+  const [lang, setLang] = useState(initialLang);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setLang(lang);
   }, []);
 

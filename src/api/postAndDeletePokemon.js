@@ -7,9 +7,7 @@ import {
   serverTimestamp,
 } from "firebase/firestore";
 
-// Saves a new message to Cloud Firestore.
 export async function savePokemon({ pokemonId, imgUrl, uid, type }) {
-  // Add a new message entry to the Firebase database.
   try {
     await addDoc(collection(getFirestore(), "pokemon"), {
       pokemonId: pokemonId,
@@ -24,7 +22,6 @@ export async function savePokemon({ pokemonId, imgUrl, uid, type }) {
 }
 
 export async function releasePokemon(id) {
-  // Add a new message entry to the Firebase database.
   try {
     await deleteDoc(doc(getFirestore(), "pokemon", id));
   } catch (error) {

@@ -1,41 +1,20 @@
-import { useContext, useState } from "react";
-import { PokemonContext } from "../hooks/PokemonContext";
-import { useNavigate } from "react-router-dom";
-import { translateName } from "../hooks/useTranslateName";
-import { AuthContext } from "../hooks/UserContext";
 import tw from "tailwind-styled-components";
-import { LangContext } from "../hooks/LangContext";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+
+import { translateName } from "../hooks/useTranslateName";
 import { useGenerateNumber } from "../hooks/useGenerateNumber";
-
-const Card = tw.div`
- rounded-md md:w-60 lg:w-64 py-3 mb-1
- items-center bg-[#FFFFFF90] dark:brightness-110 shadow-md dark:drop-shadow-xl
-`;
-
-const TitleName = tw.h2`
-text-xl mr-5 font-semibold tracking-wider
-`;
-
-const CardImage = tw.img`
-animate-bounce p-4 opacity-100 drop-shadow-2xl
-`;
-
-const CatchButton = tw.button`
- border text-sm rounded-md hover:bg-blue-300 hover:text-white px-1 mx-1 lg:px-0 lg:mx-0
- hover:border-blue-300 active:bg-yellow-200 active:border-yellow-200
-`;
-
-const FlexBox = tw.div`
-flex flex-row justify-center md:justify-end items-center gap-2 md:mr-5
-`;
+import { LangContext } from "../hooks/LangContext";
+import { PokemonContext } from "../hooks/PokemonContext";
+import { AuthContext } from "../hooks/UserContext";
 
 const PokemonCard = ({ pokemon, image, type }) => {
   const { t } = useTranslation();
-  const { pokemons, capture, captureFB } = useContext(PokemonContext);
+  const { capture, captureFB } = useContext(PokemonContext);
   const { user } = useContext(AuthContext);
-  const { lang, setLang } = useContext(LangContext);
-  let userId = user?.uid;
+  const { lang } = useContext(LangContext);
+
   let navigate = useNavigate();
   let percent = useGenerateNumber(1, 100);
 
@@ -53,7 +32,7 @@ const PokemonCard = ({ pokemon, image, type }) => {
     });
   };
 
-  const JustCatch = (percent) => {
+  const JustCatch = () => {
     let prob = percent * 0.01;
 
     let ran = Math.random();
@@ -97,7 +76,7 @@ const PokemonCard = ({ pokemon, image, type }) => {
         {t("catch_rate")} {parseInt(percent)}%
       </p>
       <CardImage src={image} alt="" />
-      {type === "capture" && userId ? (
+      {type === "capture" && user?.uid ? (
         <>
           <FlexBox>
             <div onClick={capture(pokemon)}>
@@ -127,3 +106,25 @@ const PokemonCard = ({ pokemon, image, type }) => {
 };
 
 export default PokemonCard;
+
+const Card = tw.div`
+ rounded-md md:w-60 lg:w-64 py-3 mb-1
+ items-center bg-[#FFFFFF90] dark:brightness-110 shadow-md dark:drop-shadow-xl
+`;
+
+const TitleName = tw.h2`
+text-xl mr-5 font-semibold tracking-wider
+`;
+
+const CardImage = tw.img`
+animate-bounce p-4 opacity-100 drop-shadow-2xl
+`;
+
+const CatchButton = tw.button`
+ border text-sm rounded-md hover:bg-blue-300 hover:text-white px-1 mx-1 lg:px-0 lg:mx-0
+ hover:border-blue-300 active:bg-yellow-200 active:border-yellow-200
+`;
+
+const FlexBox = tw.div`
+flex flex-row justify-center md:justify-end items-center gap-2 md:mr-5
+`;

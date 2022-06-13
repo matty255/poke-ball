@@ -1,8 +1,8 @@
-import { getFirestore, collection } from "firebase/firestore";
-import { app } from "../api/firebase";
-import { useCollection } from "react-firebase-hooks/firestore";
-import { AuthContext } from "../hooks/UserContext";
 import { useContext } from "react";
+import { app } from "../api/firebase";
+import { AuthContext } from "../hooks/UserContext";
+import { getFirestore, collection } from "firebase/firestore";
+import { useCollection } from "react-firebase-hooks/firestore";
 
 export const CapturedPokemons = () => {
   const { user } = useContext(AuthContext);

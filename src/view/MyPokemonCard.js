@@ -1,37 +1,16 @@
 import { translateName } from "../hooks/useTranslateName";
 import { releasePokemon } from "../api/postAndDeletePokemon";
-import { useNavigate, Link } from "react-router-dom";
-import tw from "tailwind-styled-components";
+import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { LangContext } from "../hooks/LangContext";
-import { useContext, setState } from "react";
+import { useContext } from "react";
+import tw from "tailwind-styled-components";
 import Swal from "sweetalert2";
-const Card = tw.div`
- rounded-md w-[12rem] py-3 m-5 md:-ml-3
- items-center bg-[#FFFFFF80] shadow-md 
-`;
-
-const TitleName = tw.h2`
-text-xl mr-5 font-semibold tracking-wider text-right
-`;
-
-const CardImage = tw.img`
-animate-bounce p-4 opacity-100 drop-shadow-2xl
-`;
-
-const CatchButton = tw.button`
- border text-sm rounded-md hover:bg-blue-300 hover:text-white px-1 mx-1 lg:px-0 lg:mx-0
- hover:border-blue-300 active:bg-yellow-200 active:border-yellow-200
-`;
-
-const FlexBox = tw.div`
-flex flex-row justify-center md:justify-end items-center gap-2 md:mr-5
-`;
 
 const MyPokemonCard = ({ pokemonId, imgUrl, type, id }) => {
   let navigate = useNavigate();
   const { t } = useTranslation();
-  const { lang, setLang } = useContext(LangContext);
+  const { lang } = useContext(LangContext);
 
   const ClickToShare = () => {
     Swal.fire({
@@ -65,3 +44,25 @@ const MyPokemonCard = ({ pokemonId, imgUrl, type, id }) => {
 };
 
 export default MyPokemonCard;
+
+const Card = tw.div`
+ rounded-md w-[12rem] py-3 m-5 md:-ml-3
+ items-center bg-[#FFFFFF80] shadow-md 
+`;
+
+const TitleName = tw.h2`
+text-xl mr-5 font-semibold tracking-wider text-right
+`;
+
+const CardImage = tw.img`
+animate-bounce p-4 opacity-100 drop-shadow-2xl
+`;
+
+const CatchButton = tw.button`
+ border text-sm rounded-md hover:bg-blue-300 hover:text-white px-1 mx-1 lg:px-0 lg:mx-0
+ hover:border-blue-300 active:bg-yellow-200 active:border-yellow-200
+`;
+
+const FlexBox = tw.div`
+flex flex-row justify-center md:justify-end items-center gap-2 md:mr-5
+`;

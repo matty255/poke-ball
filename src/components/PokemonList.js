@@ -1,15 +1,13 @@
 import { useState, useEffect, useContext, useRef } from "react";
 import { PokemonContext } from "../hooks/PokemonContext";
-
-import PokemonCard from "../view/PokemonCard";
-import axios from "axios";
 import { useGenerateNumber } from "../hooks/useGenerateNumber";
 import Spinner from "../elements/Spinner";
-import tw from "tailwind-styled-components";
-import Refresh from "../static/refresh.png";
 import ToggleDark from "../elements/ToggleDark";
 import ToggleLang from "../elements/ToggleLang";
-import { useTranslation } from "react-i18next";
+import tw from "tailwind-styled-components";
+import Refresh from "../static/refresh.png";
+import PokemonCard from "../view/PokemonCard";
+import axios from "axios";
 
 const CardBox = tw.div`
 flex flex-row flex-wrap items-center gap-3 gap-y-5 md:gap-y-6
@@ -17,7 +15,6 @@ justify-around mx-auto
 `;
 
 const PokemonList = () => {
-  const { t } = useTranslation();
   const num = useGenerateNumber(1, 880);
   const [loading, setLoading] = useState(true);
   const [pageNum, setPageNum] = useState(
@@ -114,7 +111,7 @@ const PokemonList = () => {
           })}
 
         {loading && <Spinner />}
-        {end && <p className="text-center my-10">여기가 페이지 끝입니다!</p>}
+        {end && <p className="text-center my-10">the end!</p>}
       </CardBox>
     </div>
   );

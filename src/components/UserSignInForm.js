@@ -1,12 +1,10 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+
 import { AuthContext } from "../hooks/UserContext";
-import { SignIn, logout } from "../api/authLogInAndOut";
-import Logout from "../static/logout.png";
+import { SignIn } from "../api/authLogInAndOut";
 
 const UserSignInForm = () => {
   const { user } = useContext(AuthContext);
-
   return (
     <>
       {!user ? (
@@ -14,13 +12,7 @@ const UserSignInForm = () => {
           <SignIn />
         </>
       ) : (
-        <Link
-          to="/"
-          className="p-2 md:p-4 text-sm md:text-base flex items-end  text-white drop-shadow-lg"
-          onClick={logout}
-        >
-          <img src={Logout} alt="Logout" className="drop-shadow-md" />
-        </Link>
+        ""
       )}
     </>
   );

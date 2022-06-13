@@ -1,41 +1,23 @@
 import { useEffect, useState, useContext } from "react";
 import { translateName, FindGenus } from "../hooks/useTranslateName";
-import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
-import tw from "tailwind-styled-components";
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import C from "../static/shareIcon.png";
+
 import { SignIn } from "../api/authLogInAndOut";
 import { LangContext } from "../hooks/LangContext";
 import { useTranslation } from "react-i18next";
+
+import axios from "axios";
+import tw from "tailwind-styled-components";
+import C from "../static/shareIcon.png";
 import ToggleDark from "../elements/ToggleDark";
 import ToggleLang from "../elements/ToggleLang";
-
-const FlexBox = tw.div`
-flex flex-row justify-center items-center gap-4 mt-5
-`;
-
-const ShareBox = tw.div`
-flex flex-row gap-2 text-lg border rounded-full hover:bg-yellow-300 hover:text-white
-cursor-pointer active:bg-yellow-200 active:border-yellow-200
-`;
-
-const SubTitle = tw.h2`
-dark:text-white justify-center text-lg -mt-2
- font-bold decoration-double tracking-tight drop-shadow-md
-`;
-
-const Title = tw.h1`
-dark:text-white justify-center text-4xl p-4 decoration-current overline
- font-bold tracking-widest decoration-double
-whitespace-pre-wrap drop-shadow-md
-`;
 
 const PokemonShare = () => {
   let navigate = useNavigate();
   let location = useLocation();
   const { t } = useTranslation();
-  const { lang, setLang } = useContext(LangContext);
+  const { lang } = useContext(LangContext);
   const currentUrl = window.location.href;
   const pokemonInfo = location.pathname.split("/")[2];
   const pokemonId = pokemonInfo.split("-")[0];
@@ -71,11 +53,12 @@ const PokemonShare = () => {
 
   return (
     <>
-      <div className="mt-4 w-full h-screen bg-share-pattern -hue-rotate-60">
+      <OuterBox>
         <div className="flex flex-row gap-3 pl-3">
           <ToggleDark />
           <ToggleLang />
         </div>
+
         <div className="flex justify-center items-center flex-col gap-10">
           <h1 className="text-4xl dark:text-white text-center mt-14 mx-10">
             {t("share_page", {
@@ -123,9 +106,33 @@ const PokemonShare = () => {
             </CopyToClipboard>
           </ShareBox>
         </FlexBox>
-      </div>
+      </OuterBox>
     </>
   );
 };
 
 export default PokemonShare;
+
+const FlexBox = tw.div`
+flex flex-row justify-center items-center gap-4 mt-5
+`;
+
+const ShareBox = tw.div`
+flex flex-row gap-2 text-lg border rounded-full hover:bg-yellow-300 hover:text-white
+cursor-pointer active:bg-yellow-200 active:border-yellow-200
+`;
+
+const SubTitle = tw.h2`
+dark:text-white justify-center text-lg -mt-2
+ font-bold decoration-double tracking-tight drop-shadow-md
+`;
+
+const Title = tw.h1`
+dark:text-white justify-center text-4xl p-4 decoration-current overline
+ font-bold tracking-widest decoration-double
+whitespace-pre-wrap drop-shadow-md
+`;
+
+const OuterBox = tw.div`
+mt-4 w-full h-screen bg-share-pattern
+`;

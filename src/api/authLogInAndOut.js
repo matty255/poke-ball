@@ -7,12 +7,13 @@ import {
 } from "react-firebase-hooks/auth";
 import GoogleIcon from "../static/googleIcon.png";
 import FacebookIcon from "../static/facebookIcon.png";
-import { signOut } from "firebase/auth";
+import { deleteUser } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 export const SignIn = () => {
   const { user } = useContext(AuthContext);
-  const [signInWithGoogle, users, loading, error] = useSignInWithGoogle(auth);
-  const [signInWithFacebook, userFace, loadingFace, errorFace] =
+  const [signInWithGoogle, loading] = useSignInWithGoogle(auth);
+  const [signInWithFacebook, userFace, loadingFace] =
     useSignInWithFacebook(auth);
 
   if (loading || loadingFace) {
@@ -36,5 +37,16 @@ export const SignIn = () => {
 };
 
 export const logout = () => {
-  signOut(auth);
+  auth.signOut(auth);
+};
+
+export const deleteUserButton = (user) => {
+  deleteUser(user)
+    .then(() => {
+      alert("탈퇴 완료...! poke-ball을 이용해주셔서 감사합니다.");
+      useNavigate("/", { replace: true });
+    })
+    .catch((error) => {
+      console.log("실패...");
+    });
 };
